@@ -15,7 +15,7 @@ export default defineConfig({
     port: 5173, // Ensure this matches your dev server port
     allowedHosts: [
       "localhost",
-      "https://japanese-width-anatomy-devices.trycloudflare.com",//backend api cor cors
+      "https://140420078a6f.ngrok-free.app/api",//backend api cor cors
       "plus-west-hot-tournament.trycloudflare.com "
     ],
     cors: true, // Enable CORS for external access

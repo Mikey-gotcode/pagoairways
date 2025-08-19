@@ -4,7 +4,7 @@ import axios from 'axios';
 /**
  * API base config
  */
-const API_BASE_URL = 'https://japanese-width-anatomy-devices.trycloudflare.com/api';
+const API_BASE_URL = 'https://140420078a6f.ngrok-free.app/api';
 
 // derive BACKEND_BASE (strip /api) and allow env override for production
 export const BACKEND_BASE = (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.VITE_BACKEND_URL)
