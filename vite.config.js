@@ -16,7 +16,8 @@ export default defineConfig({
     allowedHosts: [
       "localhost",
       "https://140420078a6f.ngrok-free.app/api",//backend api cor cors
-      "plus-west-hot-tournament.trycloudflare.com "
+      "plus-west-hot-tournament.trycloudflare.com ",
+      "https://pagoairways.netlify.app"
     ],
     cors: true, // Enable CORS for external access
   },
