@@ -29,13 +29,33 @@ export async function handler(event) {
             from: process.env.GMAIL_USER,
             to: 'pagoairways@example.com', // The recipient's email
             subject: 'New IATA Course Enrollment',
-            text: `
-                New enrollment from Pago Airways website.
-
-                Name: ${name}
-                Email: ${email}
-                Phone: ${phone}
-                Experience: ${experience}
+            html: `
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <style>
+                        body { font-family: sans-serif; }
+                        .container { max-width: 600px; margin: auto; padding: 20px; border: 1px solid #ddd; border-radius: 8px; }
+                        h2 { color: #333; }
+                        ul { list-style-type: none; padding: 0; }
+                        li { margin-bottom: 10px; }
+                        .label { font-weight: bold; color: #555; }
+                        .value { color: #000; }
+                    </style>
+                </head>
+                <body>
+                    <div class="container">
+                        <h2>New IATA Course Enrollment</h2>
+                        <p>A new enrollment has been submitted through the Pago Airways website.</p>
+                        <ul>
+                            <li><span class="label">Name:</span> <span class="value">${name}</span></li>
+                            <li><span class="label">Email:</span> <span class="value">${email}</span></li>
+                            <li><span class="label">Phone:</span> <span class="value">${phone}</span></li>
+                            <li><span class="label">Experience:</span> <span class="value">${experience}</span></li>
+                        </ul>
+                    </div>
+                </body>
+                </html>
             `,
         };
 

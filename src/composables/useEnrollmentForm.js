@@ -1,4 +1,3 @@
-// src/composables/useEnrollmentForm.js
 import { ref } from 'vue';
 
 // The composable function
@@ -12,25 +11,40 @@ export default function useEnrollmentForm(showModal) {
         agree: false
     });
 
-    // Define the submission logic
-    const handleSubmit = () => {
-        // Here you would typically send data to a server
-        console.log('Enrollment submitted:', form.value);
-        
-        // Reset the form
-        form.value = {
-            name: '',
-            email: '',
-            phone: '',
-            experience: '',
-            agree: false
-        };
+    // Define the submission logic that makes the API call
+    const handleSubmit = async () => {
+        try {
+            // Make the API call to your Netlify Function
+            const response = await fetch('/.netlify/functions/send-email', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(form.value),
+            });
 
-        // Close the modal
-        showModal.value = false;
+            if (response.ok) {
+                console.log('Enrollment submitted and email sent!');
+                // You can add a success toast here
+            } else {
+                console.error('Failed to submit enrollment:', await response.text());
+                // You can add an error toast here
+            }
 
-        // Optionally, show a success message or toast
-        // showSuccessToast.value = true;
+        } catch (error) {
+            console.error('Network or server error:', error);
+            // You can add a network error toast here
+        } finally {
+            // Reset the form and close the modal regardless of the outcome
+            form.value = {
+                name: '',
+                email: '',
+                phone: '',
+                experience: '',
+                agree: false
+            };
+            showModal.value = false;
+        }
     };
 
     // Return the state and methods that the component needs
