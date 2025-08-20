@@ -8,7 +8,7 @@ import { scrollTo, showModal, form, submitEnrollment } from '@/helper'
         <nav class="fixed w-full bg-white shadow-md z-50">
             <div class="container mx-auto px-6 py-3 flex justify-between items-center">
                 <div class="flex items-center">
-                    <img src="https://www.iata.org" alt="IATA Logo" class="h-12">
+                    <img src="/assets/iatalogo.png" alt="IATA Logo" class="h-12">
                     <span class="ml-3 text-xl font-semibold text-blue-800">Travel & Tourism Consultant</span>
                 </div>
                 <div class="hidden md:flex space-x-8">
