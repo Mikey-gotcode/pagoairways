@@ -34,7 +34,7 @@
                     </div>
                     <div class="md:w-1/2 flex justify-center">
                         <div class="relative">
-                            <img src="https://www.iata.org/contentassets/d7c512eb9a704ba2a8056a3e4ee8f93b/training-certificate.jpg" 
+                            <img src="/assets/images/tvp-tp_certificates.webp" 
                                  alt="IATA Certificate" 
                                  class="rounded-xl shadow-2xl max-w-md w-full floating">
                             <div class="absolute -bottom-6 -right-6 bg-yellow-400 p-4 rounded-full shadow-xl">
