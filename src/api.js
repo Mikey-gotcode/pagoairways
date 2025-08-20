@@ -4,7 +4,7 @@ import axios from 'axios';
 /**
  * API base config
  */
-const API_BASE_URL = 'https://6dc4c048ff70.ngrok-free.app/api';
+const API_BASE_URL = 'https://2d5acd37f242.ngrok-free.app/api';
 
 // derive BACKEND_BASE (strip /api) and allow env override for production
 export const BACKEND_BASE = (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.VITE_BACKEND_URL)

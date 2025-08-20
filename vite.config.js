@@ -15,7 +15,7 @@ export default defineConfig({
     port: 5173, // Ensure this matches your dev server port
     allowedHosts: [
       "localhost",
-      "https://6dc4c048ff70.ngrok-free.app",//backend api cor cors
+      "https://2d5acd37f242.ngrok-free.app",//backend api cor cors
       "plus-west-hot-tournament.trycloudflare.com ",
       "https://pagoairways.netlify.app"
     ],
