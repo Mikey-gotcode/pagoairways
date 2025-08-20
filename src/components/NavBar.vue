@@ -32,7 +32,7 @@
           ]">Destinations</a>
         </li>
         <li>
-          <a href="http://localhost:5173/IATA" :class="[
+          <a href="https://pagoairways.netlify.app/IATA" :class="[
             'hover:text-gray-300 transition-colors duration-200',
             { 'text-gray-800 hover:text-gray-600': !isTransparent, 'text-white hover:text-gray-300': isTransparent }
           ]">IATA courses</a>
