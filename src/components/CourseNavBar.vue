@@ -1,5 +1,5 @@
 <script setup>
-import {scrollTo,showModal} from '@/helper'
+import { scrollTo, showModal, form, submitEnrollment } from '@/helper'
 
 </script>
 

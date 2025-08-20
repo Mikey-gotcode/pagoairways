@@ -1,12 +1,11 @@
 <template>
-      <!-- Enrollment Modal -->
-        <transition name="fade">
+      <transition name="fade">
             <div v-if="showModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
                 <div class="bg-white rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
                     <div class="p-6">
                         <div class="flex justify-between items-center mb-6">
                             <h3 class="text-2xl font-bold text-blue-800">Enroll in the Course</h3>
-                            <button @click="showModal = false" class="text-gray-500 hover:text-gray-700">
+                            <button @click="closeModal" class="text-gray-500 hover:text-gray-700">
                                 <i class="fas fa-times text-xl"></i>
                             </button>
                         </div>
@@ -48,22 +47,22 @@
                             </div>
                             
                             <div>
-                                <form @submit.prevent="submitEnrollment" class="space-y-4">
+                                <form @submit.prevent="handleSubmit" class="space-y-4">
                                     <div>
-                                        <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
-                                        <input type="text" id="name" v-model="form.name" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                                        <label for="name" class="block text-sm font-medium text-black mb-1">Full Name</label>
+                                        <input type="text" id="name" v-model="form.name" required class="w-full px-4 py-2 border text-black border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
                                     </div>
                                     <div>
-                                        <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
-                                        <input type="email" id="email" v-model="form.email" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                                        <label for="email" class="block text-sm font-medium text-black mb-1">Email Address</label>
+                                        <input type="email" id="email" v-model="form.email" required class="w-full px-4 py-2 border text-black border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
                                     </div>
                                     <div>
-                                        <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
-                                        <input type="tel" id="phone" v-model="form.phone" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                                        <label for="phone" class="block text-sm font-medium text-black mb-1">Phone Number</label>
+                                        <input type="tel" id="phone" v-model="form.phone" class="w-full px-4 py-2 border border-gray-300 text-black rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
                                     </div>
                                     <div>
-                                        <label for="experience" class="block text-sm font-medium text-gray-700 mb-1">Travel Industry Experience</label>
-                                        <select id="experience" v-model="form.experience" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                                        <label for="experience" class="block text-sm font-medium text-black mb-1">Travel Industry Experience</label>
+                                        <select id="experience" v-model="form.experience" class="w-full px-4 py-2 border border-gray-300 rounded-lg text-black focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
                                             <option value="">Select your experience level</option>
                                             <option value="none">None (just starting)</option>
                                             <option value="1-2">1-2 years</option>
@@ -91,7 +90,18 @@
 </template>
 
 <script setup>
-import {showModal} from '@/helper'
+import { showModal } from '@/helper'; // Re-use showModal state from helper.js
+import useEnrollmentForm from '@/composables/useEnrollmentForm';
 
+// Use the new composable to get form state and logic
+const { form, handleSubmit } = useEnrollmentForm(showModal);
 
+// Expose a function to close the modal
+const closeModal = () => {
+    showModal.value = false;
+};
 </script>
+
+<style scoped>
+/* Your styles */
+</style>

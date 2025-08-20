@@ -23,15 +23,15 @@
                         <ul class="space-y-2 text-gray-400">
                             <li class="flex items-start">
                                 <i class="fas fa-map-marker-alt mt-1 mr-3 text-blue-400"></i>
-                                <span>800 Place Victoria, Montreal, Quebec, H4Z 1M1, Canada</span>
+                                <span>Electricity House 8th Flr Harambee Ave.</span>
                             </li>
                             <li class="flex items-center">
                                 <i class="fas fa-phone-alt mr-3 text-blue-400"></i>
-                                <span>+1 514 874 0202</span>
+                                <span>0203-311-388 |  0717666651</span>
                             </li>
                             <li class="flex items-center">
                                 <i class="fas fa-envelope mr-3 text-blue-400"></i>
-                                <span>training@iata.org</span>
+                                <span>info@pagoairways.co.ke</span>
                             </li>
                         </ul>
                     </div>
