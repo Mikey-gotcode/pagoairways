@@ -38,12 +38,13 @@
             { 'hover:text-gray-600': !isTransparent, 'hover:text-gray-300': isTransparent }
           ]">Destinations</a>
         </li>
-        <li>
-          <a href="https://pagoairways.netlify.app/IATA" :class="[
-            'hover:text-gray-300 transition-colors duration-200',
-            { 'hover:text-gray-600': !isTransparent, 'hover:text-gray-300': isTransparent }
-          ]">IATA courses</a>
-        </li>
+          <router-link to="/IATA" :class="[
+        'hover:text-gray-300 transition-colors duration-200',
+        { 'hover:text-gray-600': !isTransparent, 'hover:text-gray-300': isTransparent }
+      ]">
+        IATA courses
+      </router-link>
+
         <li>
           <a href="#contact" :class="[
             'hover:text-gray-300 transition-colors duration-200',
