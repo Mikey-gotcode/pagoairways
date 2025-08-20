@@ -1,7 +1,7 @@
 <template>
   <section class="min-h-screen flex flex-col lg:flex-row">
     <div class="w-full lg:w-1/2 relative flex items-end justify-start p-8 md:p-12 lg:p-16 text-white overflow-hidden"
-         style="background-image: url('/src/assets/images/boarding_pass_bg.jpg'); background-size: cover; background-position: center;">
+         style="background-image: url('/assets/images/boarding_pass_bg.jpg'); background-size: cover; background-position: center;">
       <div class="absolute inset-0 bg-black opacity-50"></div> <div class="relative z-10 text-left">
         <h3 class="text-3xl md:text-4xl font-bold mb-4" style="font-family: 'Playfair Display', serif;">
           BOARDING PASS

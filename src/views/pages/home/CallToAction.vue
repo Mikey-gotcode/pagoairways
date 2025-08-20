@@ -1,7 +1,7 @@
 <template>
   <div class="relative h-screen w-full overflow-hidden">
     <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover">
-        <source src="/src/assets/videos/pagobackground.mp4" type="video/mp4">
+        <source src="/assets/videos/pagobackground.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
 

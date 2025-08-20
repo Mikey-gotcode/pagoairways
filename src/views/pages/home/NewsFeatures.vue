@@ -34,19 +34,19 @@ const newsFeatures = ref([
   {
     id: 'news-1',
     title: 'Tours & Travels Magazine',
-    image: '/src/assets/images/news/tours_travel.jpeg',
+    image: '/assets/images/news/tours_travel.jpeg',
     description: 'News write-ups offer a great way to let clients know about new products and services, events, awards, and more.'
   },
   {
     id: 'news-2',
     title: 'Travel Unlimited',
-    image: '/src/assets/images/news/travel_unlimited.webp',
+    image: '/assets/images/news/travel_unlimited.webp',
     description: 'News write-ups offer a great way to let clients know about new products and services, events, awards, and more.'
   },
   {
     id: 'news-3',
     title: "Trixie's Travels",
-    image: '/src/assets/images/news/trixies_travels.jpeg',
+    image: '/assets/images/news/trixies_travels.jpeg',
     description: 'News write-ups offer a great way to let clients know about new products and services, events, awards, and more.'
   }
 ]);
