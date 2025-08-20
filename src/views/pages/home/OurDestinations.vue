@@ -35,56 +35,62 @@
 import { ref, onMounted, onBeforeUnmount } from 'vue';
 import { getDestinations } from '@/api.js'
 
-// Placeholder data for destinations (your existing data)
-const destinations = ref([]);
-
-
-// Reactive variable to store the current number of columns based on screen size
-const currentColumns = ref(1);
-const fetchDestinations = async () => {
+// The new retry function
+const retry = async (fn, retries = 3, delay = 1000) => {
   try {
-    const data = await getDestinations();
-    destinations.value = data;
+    return await fn();
   } catch (error) {
-    console.error('Failed to fetch destinations:', error);
+    if (retries > 0) {
+      console.warn(`Failed to fetch destinations, retrying in ${delay}ms... Attempts left: ${retries - 1}`);
+      await new Promise(res => setTimeout(res, delay));
+      return retry(fn, retries - 1, delay);
+    }
+    throw error;
   }
 };
 
-// Function to update currentColumns based on screen width
+const destinations = ref([]);
+const currentColumns = ref(1);
+
+const fetchDestinations = async () => {
+  try {
+    // Wrap the API call with the retry function
+    const data = await retry(getDestinations);
+    destinations.value = data;
+  } catch (error) {
+    console.error('Failed to fetch destinations after multiple retries:', error);
+  }
+};
+
 const updateColumns = () => {
-  if (window.innerWidth >= 1024) { // lg breakpoint
+  if (window.innerWidth >= 1024) {
     currentColumns.value = 3;
-  } else if (window.innerWidth >= 768) { // md breakpoint
+  } else if (window.innerWidth >= 768) {
     currentColumns.value = 2;
-  } else { // sm and below
+  } else {
     currentColumns.value = 1;
   }
 };
 
 onMounted(() => {
-  updateColumns(); // Set initial columns on mount
+  updateColumns();
   fetchDestinations();
-  window.addEventListener('resize', updateColumns); // Listen for resize events
+  window.addEventListener('resize', updateColumns);
 });
 
 onBeforeUnmount(() => {
-  window.removeEventListener('resize', updateColumns); // Clean up listener
+  window.removeEventListener('resize', updateColumns);
 });
 
-
-// Function to determine the AOS animation type
 const getAosAnimation = () => {
-  return 'fade-up'; // Always fade-up as requested
+  return 'fade-up';
 };
 
-// Function to calculate the AOS delay based on row
 const getAosDelay = (index) => {
   const rowNumber = Math.floor(index / currentColumns.value);
-  // Base delay per row: 0ms for first row, 200ms for second, 400ms for third etc.
   return rowNumber * 200;
 };
 </script>
-
 <style scoped>
 /* You can add specific styles here if needed, but Tailwind handles most of the layout */
 section {

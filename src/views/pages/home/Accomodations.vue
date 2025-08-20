@@ -35,7 +35,6 @@
       </Carousel> </div> </section>
 </template>
 
-
 <script setup>
 import { onMounted, ref } from 'vue';
 import Carousel from 'primevue/carousel';
@@ -43,17 +42,30 @@ import Tag from 'primevue/tag';
 import Button from 'primevue/button';
 import { getAccommodations } from '@/api';
 
-const accommodations = ref([]);
-
-const fetchAccommodations = async () => {
+// The new retry function
+const retry = async (fn, retries = 3, delay = 1000) => {
   try {
-    const data = await getAccommodations();
-    accommodations.value = data;
+    return await fn();
   } catch (error) {
-    console.error('Failed to fetch accommodations:', error);
+    if (retries > 0) {
+      console.warn(`Failed to fetch accommodations, retrying in ${delay}ms... Attempts left: ${retries - 1}`);
+      await new Promise(res => setTimeout(res, delay));
+      return retry(fn, retries - 1, delay);
+    }
+    throw error;
   }
 };
 
+const accommodations = ref([]);
+const fetchAccommodations = async () => {
+  try {
+    // Wrap the API call with the retry function
+    const data = await retry(getAccommodations);
+    accommodations.value = data;
+  } catch (error) {
+    console.error('Failed to fetch accommodations after multiple retries:', error);
+  }
+};
 const responsiveOptions = ref([
   {
     breakpoint: '1400px',
@@ -76,7 +88,6 @@ const responsiveOptions = ref([
     numScroll: 1
   }
 ]);
-
 const getSeverity = (status) => {
   switch (status) {
     case 'Available':
@@ -89,12 +100,10 @@ const getSeverity = (status) => {
       return 'info';
   }
 };
-
-onMounted(()=>{
+onMounted(() => {
   fetchAccommodations();
-})
+});
 </script>
-
 <style scoped>
 section {
   background-color: #fce4ec;
