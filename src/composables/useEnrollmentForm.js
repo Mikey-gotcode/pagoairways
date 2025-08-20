@@ -1,7 +1,8 @@
 import { ref } from 'vue';
+import { showModal, successMessage } from '@/helper';
 
 // The composable function
-export default function useEnrollmentForm(showModal) {
+export default function useEnrollmentForm() {
     // Define reactive form state
     const form = ref({
         name: '',
@@ -11,7 +12,7 @@ export default function useEnrollmentForm(showModal) {
         agree: false
     });
 
-    // Define the submission logic that makes the API call
+    // Define the submission logic
     const handleSubmit = async () => {
         try {
             // Make the API call to your Netlify Function
@@ -24,16 +25,24 @@ export default function useEnrollmentForm(showModal) {
             });
 
             if (response.ok) {
-                console.log('Enrollment submitted and email sent!');
-                // You can add a success toast here
+                // Set the success message to be displayed
+                successMessage.value = 'Enrollment submitted successfully! We will contact you shortly.';
+                
+                // Automatically clear the message after 5 seconds
+                setTimeout(() => {
+                  successMessage.value = '';
+                }, 5000);
+
             } else {
+                // Handle server-side errors
+                errorMessage.value = 'Failed to submit enrollment. Please try again.';
                 console.error('Failed to submit enrollment:', await response.text());
-                // You can add an error toast here
             }
 
         } catch (error) {
+            // Handle network errors
+            errorMessage.value = 'Network error. Please check your connection.';
             console.error('Network or server error:', error);
-            // You can add a network error toast here
         } finally {
             // Reset the form and close the modal regardless of the outcome
             form.value = {

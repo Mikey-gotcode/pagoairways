@@ -17,6 +17,10 @@ export const showModal = ref(false);
 export const showVideoModal = ref(false);
 export const showSuccessToast = ref(false);
 
+// Add new reactive states for toast messages
+export const successMessage = ref('');
+export const errorMessage = ref('');
+
 // You can also export other state and logic if needed
 export const mobileMenuOpen = ref(false);
 export const progress = ref(0);
