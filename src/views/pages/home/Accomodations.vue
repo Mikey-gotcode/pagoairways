@@ -43,7 +43,7 @@ import Button from 'primevue/button';
 import { getAccommodations } from '@/api';
 
 // The new retry function
-const retry = async (fn, retries = 3, delay = 1000) => {
+const retry = async (fn, retries = 5, delay = 1000) => {
   try {
     return await fn();
   } catch (error) {

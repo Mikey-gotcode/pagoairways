@@ -109,7 +109,7 @@ const togglePassword = () => {
   showPassword.value = !showPassword.value;
 };
 
-const retry = async (fn, retries = 3, delay = 1000) => {
+const retry = async (fn, retries = 5, delay = 1000) => {
   try {
     return await fn();
   } catch (error) {

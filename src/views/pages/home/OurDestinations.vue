@@ -36,7 +36,7 @@ import { ref, onMounted, onBeforeUnmount } from 'vue';
 import { getDestinations } from '@/api.js'
 
 // The new retry function
-const retry = async (fn, retries = 3, delay = 1000) => {
+const retry = async (fn, retries = 5, delay = 1000) => {
   try {
     return await fn();
   } catch (error) {
