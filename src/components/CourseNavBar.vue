@@ -12,7 +12,12 @@ import {scrollTo,showModal} from '@/helper'
                     <span class="ml-3 text-xl font-semibold text-blue-800">Travel & Tourism Consultant</span>
                 </div>
                 <div class="hidden md:flex space-x-8">
-                    <a href="#" @click="scrollTo('hero')" class="text-gray-700 hover:text-blue-600 transition">Home</a>
+                    <router-link to="/" :class="[
+        'hover:text-gray-300 transition-colors duration-200',
+        { 'hover:text-gray-600': !isTransparent, 'hover:text-gray-300': isTransparent }
+      ]">
+        HOME
+      </router-link>
                     <a href="#" @click="scrollTo('what-you-learn')" class="text-gray-700 hover:text-blue-600 transition">What You'll Learn</a>
                     <a href="#" @click="scrollTo('course-content')" class="text-gray-700 hover:text-blue-600 transition">Course Content</a>
                     <a href="#" @click="scrollTo('certificate')" class="text-gray-700 hover:text-blue-600 transition">Certificate</a>

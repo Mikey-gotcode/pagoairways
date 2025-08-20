@@ -109,11 +109,23 @@ const togglePassword = () => {
   showPassword.value = !showPassword.value;
 };
 
+const retry = async (fn, retries = 3, delay = 1000) => {
+  try {
+    return await fn();
+  } catch (error) {
+    if (retries > 0) {
+      console.warn(`Failed to fetch destinations, retrying in ${delay}ms... Attempts left: ${retries - 1}`);
+      await new Promise(res => setTimeout(res, delay));
+      return retry(fn, retries - 1, delay);
+    }
+    throw error;
+  }
+};
 const handleLogin = async () => {
   isLoading.value = true;
   errorMessage.value = ''; // Clear previous errors
   try {
-    const { user, token } = await login(email.value, password.value);
+    const { user, token } = await retry(login(email.value, password.value));
     
     // Check if the user is an admin and redirect them
     if (user && user.is_admin) {
