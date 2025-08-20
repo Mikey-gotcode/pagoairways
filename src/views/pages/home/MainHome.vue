@@ -1,7 +1,7 @@
 <template>
     <div v-if="isLoading" class="flex flex-col items-center justify-center h-screen bg-gray-100 dark:bg-gray-900">
         <div class="relative w-1/2 h-1/2 flex items-center justify-center">
-            <img ref="vIcon" src="/assets/icons/IconCommunity.vue" alt="Loading..."
+            <img ref="vIcon" src="/src/assets/icons/IconCommunity.vue" alt="Loading..."
                 class="loading-icon w-full h-full object-contain" style="filter: grayscale(100%) brightness(80%);" />
             <div
                 class="shine absolute top-0 left-0 w-full h-full bg-gradient-to-b from-yellow-400 to-transparent opacity-50" />

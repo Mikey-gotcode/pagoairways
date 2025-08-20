@@ -1,0 +1,72 @@
+/* src/main.css */
+
+@import './base.css';
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Crucial for ensuring full-height initial view and correct scrolling */
+html {
+  height: 100%; /* Ensure html takes full height */
+}
+
+body {
+  min-height: 100vh; /* Allows body to be at least viewport height, but grow with content */
+  margin: 0;   /* Removes default browser margins */
+  padding: 0;  /* Removes default browser padding */
+  overflow-x: hidden; /* Prevent horizontal scrollbars */
+  /* Ensure no 'display: flex' or 'place-items' here for a multi-section scrollable page */
+  /* Remove any `display: flex;` or `place-items: center;` that might have been here. */
+  /* It seems you had it in the @media query, we'll address that below. */
+}
+
+#app {
+  /* REMOVE these properties from #app, as your components will manage their own layouts */
+  /* max-width: 1280px; */
+  /* margin: 0 auto; */
+  /* padding: 2rem; */
+
+  font-weight: normal; /* Keep this if it's a global font setting */
+  min-height: 100%; /* Important: Allows #app to expand to contain all child components */
+
+  /* If you need a consistent max-width for *content* within your components,
+     use Tailwind's 'container' class on the *inner divs* of your components
+     (e.g., in DestinationsSection, you already have `container mx-auto px-4`).
+     Do NOT apply max-width to #app if you want full-width sections. */
+}
+
+/* Remove or greatly simplify this @media query for body and #app */
+@media (min-width: 1024px) {
+  /* If you had 'display: flex' or 'place-items: center' on body here, remove it. */
+  /* body {
+    display: block; // Or just remove the entire rule if it was solely for centering
+    place-items: unset;
+  } */
+
+  /* Remove these #app grid styles, as components should manage their own grids */
+  /* #app {
+    display: block; // Or just remove the entire rule
+    grid-template-columns: unset;
+    padding: unset;
+  } */
+}
+
+
+/* Keep your existing 'a' and '.green' styles and @media (hover: hover) rules as they are general */
+a,
+.green {
+  text-decoration: none;
+  color: hsla(160, 100%, 37%, 1);
+  transition: 0.4s;
+  padding: 3px;
+}
+
+@media (hover: hover) {
+  a:hover {
+    background-color: hsla(160, 100%, 37%, 0.2);
+  }
+}
