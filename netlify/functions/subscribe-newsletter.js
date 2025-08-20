@@ -1,6 +1,6 @@
-const nodemailer = require('nodemailer');
+import { createTransport } from 'nodemailer';
 
-exports.handler = async (event) => {
+export async function handler(event) {
     if (event.httpMethod !== 'POST') {
         return { statusCode: 405, body: 'Method Not Allowed' };
     }
@@ -15,7 +15,7 @@ exports.handler = async (event) => {
             };
         }
 
-        const transporter = nodemailer.createTransport({
+        const transporter = createTransport({
             service: 'gmail',
             auth: {
                 user: process.env.GMAIL_USER, // Your Gmail address
@@ -62,4 +62,4 @@ exports.handler = async (event) => {
             body: JSON.stringify({ message: 'Failed to subscribe.' }),
         };
     }
-};
+}
