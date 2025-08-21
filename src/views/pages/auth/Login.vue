@@ -121,15 +121,17 @@ const retry = async (fn, retries = 5, delay = 1000) => {
     throw error;
   }
 };
+
 const handleLogin = async () => {
   isLoading.value = true;
   errorMessage.value = ''; // Clear previous errors
   try {
-    const { user, token } = await retry(login(email.value, password.value));
-    
+    // FIX: Wrap the login call in an anonymous function
+    const { user } = await retry(() => login(email.value, password.value));
+
     // Check if the user is an admin and redirect them
     if (user && user.is_admin) {
-        router.push('/super-admin' );
+        router.push('/super-admin');
     } else {
         // Redirect to a default page for regular users
         router.push({ name: 'dashboard' }); 
