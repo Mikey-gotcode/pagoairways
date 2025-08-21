@@ -1,7 +1,6 @@
 <template>
   <div id="call-to-action-section" class="relative h-screen w-full overflow-hidden">
-    <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover">
-        <source src="/assets/videos/pagobackground.mp4" type="video/mp4">
+    <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover" :src="videoSource" type="video/mp4">
         Your browser does not support the video tag.
     </video>
 
@@ -41,7 +40,29 @@
 </template>
 
 <script setup>
-    // No script logic needed for this static component
+import { ref, onMounted, onBeforeUnmount } from 'vue';
+
+const videoSource = ref('');
+const isMobilePortrait = window.matchMedia('(max-width: 767px) and (orientation: portrait)');
+
+const setVideoSource = (e) => {
+  if (e.matches) {
+    // If it's a mobile device in portrait mode
+    videoSource.value = '/assets/videos/pago-portrait.mp4';
+  } else {
+    // For all other devices (laptops, tablets, landscape mobile)
+    videoSource.value = '/assets/videos/pagobackground.mp4';
+  }
+};
+
+onMounted(() => {
+  setVideoSource(isMobilePortrait); // Set initial video
+  isMobilePortrait.addEventListener('change', setVideoSource); // Listen for changes
+});
+
+onBeforeUnmount(() => {
+  isMobilePortrait.removeEventListener('change', setVideoSource); // Clean up the listener
+});
 </script>
 
 <style scoped>
