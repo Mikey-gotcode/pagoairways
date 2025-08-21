@@ -3,7 +3,7 @@
         <div class="container mx-auto px-6">
             <div class="grid md:grid-cols-4 gap-12">
                 <div>
-                    <img src="https://www.iata.org/contentassets/d7c512eb9a704ba2a8056a3e4ee8f93b/iata-logo-1.png" alt="IATA Logo" class="h-12 mb-4">
+                    <img src="/assets/iatalogo.png" alt="IATA Logo" class="h-12 mb-4">
                     <p class="text-gray-400">
                         The International Air Transport Association is the trade association for the world's airlines, representing over 290 airlines or 83% of total air traffic.
                     </p>
@@ -65,7 +65,7 @@
                 </div>
             </div>
             <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500">
-                <p>© 2023 IATA Travel & Tourism Consultant Course. All rights reserved.</p>
+                <p>© 2025 PAGO-IATA Travel & Tourism Consultant Course. All rights reserved.</p>
             </div>
         </div>
     </footer>
