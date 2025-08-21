@@ -26,10 +26,10 @@
           </h1>
       </div>
 
-      <a href="#"
+      <router-link to="/learnmore"
           class="border-2 border-white text-white px-6 py-2 sm:px-8 sm:py-3 text-base sm:text-lg uppercase tracking-wider hover:bg-white hover:text-black transition duration-300 ease-in-out text-center">
           Learn More
-      </a>
+      </router-link>
 
       <p class="mt-8 sm:mt-12 md:mt-20 text-sm sm:text-base md:text-xl tracking-widest uppercase font-light opacity-80 text-center"
          style="font-family: 'Cormorant Garamond', serif; text-shadow: 1px 1px 2px rgba(0,0,0,0.5);">

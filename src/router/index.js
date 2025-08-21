@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import MainHome from "@/views/pages/home/MainHome.vue";
 import CourseIndex from "@/views/pages/schooling/CourseIndex.vue";
 import AdminIndex from "@/views/pages/admins/AdminIndex.vue";
+import LearnMoreIndex from "@/views/pages/learnmore/LearnMore.vue";
 import DestinationManager from "@/components/DestinationManager.vue";
 import AccommodationManager from "@/components/AccommodationManager.vue";
 import Login from "@/views/pages/auth/Login.vue";
@@ -16,6 +17,11 @@ const routes = [
     {
         path:'/IATA',
         component:CourseIndex
+    }
+    ,
+     {
+        path:'/learnmore',
+        component:LearnMoreIndex
     }
     ,
     {
