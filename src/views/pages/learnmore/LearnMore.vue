@@ -14,7 +14,7 @@
             <a href="#" class="text-blue-600 border-b-2 border-blue-600 px-3 py-2 text-sm font-medium">Learn More</a>
             <a href="#" class="text-gray-500 hover:text-gray-700 px-3 py-2 text-sm font-medium">Pricing</a>
             <a href="#" class="text-gray-500 hover:text-gray-700 px-3 py-2 text-sm font-medium">Contact</a>
-            <button class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition duration-300">
+            <button @click="handleGetStarted" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition duration-300">
               Get Started
             </button>
           </div>
@@ -33,9 +33,9 @@
           <a href="#" class="text-gray-500 hover:bg-gray-50 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium">Learn More</a>
           <a href="#" class="text-gray-500 hover:bg-gray-50 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium">Pricing</a>
           <a href="#" class="text-gray-500 hover:bg-gray-50 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium">Contact</a>
-          <a href="#" class="block w-full text-center bg-blue-600 text-white px-4 py-2 rounded-md mx-3 my-2 text-base font-medium">
+          <button @click="handleGetStarted" class="block w-full text-center bg-blue-600 text-white px-4 py-2 rounded-md mx-3 my-2 text-base font-medium">
             Get Started
-          </a>
+          </button>
         </div>
       </div>
     </nav>
@@ -47,10 +47,10 @@
             <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-6">Discover the World with Our Expertly Curated Tours</h1>
             <p class="text-xl opacity-90 mb-8">From exotic international destinations to hidden local gems, our bespoke travel experiences create memories that last a lifetime. Let us take you on journeys beyond imagination.</p>
             <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-              <button class="bg-white text-blue-600 hover:bg-gray-100 px-6 py-3 rounded-md text-lg font-semibold transition duration-300">
+              <button @click="scrollToSection('features-section')" class="bg-white text-blue-600 hover:bg-gray-100 px-6 py-3 rounded-md text-lg font-semibold transition duration-300">
                 Explore Destinations <i class="fas fa-globe ml-2"></i>
               </button>
-              <button class="bg-transparent border-2 border-white hover:bg-white hover:text-blue-600 px-6 py-3 rounded-md text-lg font-semibold transition duration-300">
+              <button @click="scrollToSection('how-it-works-section')" class="bg-transparent border-2 border-white hover:bg-white hover:text-blue-600 px-6 py-3 rounded-md text-lg font-semibold transition duration-300">
                 View Itineraries <i class="fas fa-route ml-2"></i>
               </button>
             </div>
@@ -62,7 +62,7 @@
       </div>
     </section>
 
-    <section class="py-20 bg-gray-50">
+    <section id="features-section" class="py-20 bg-gray-50">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16">
           <h2 class="text-3xl font-bold text-gray-900 mb-4">Unforgettable Travel Experiences</h2>
@@ -121,7 +121,7 @@
       </div>
     </section>
 
-    <section class="py-20 bg-white">
+    <section id="how-it-works-section" class="py-20 bg-white">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16">
           <h2 class="text-3xl font-bold text-gray-900 mb-4">Your Journey Awaits</h2>
@@ -310,7 +310,7 @@
         
         <div class="text-center mt-12">
           <p class="text-gray-600 mb-6">Still have questions? We're happy to help.</p>
-          <button class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-md text-lg font-semibold transition duration-300">
+          <button @click="handleContactUs" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-md text-lg font-semibold transition duration-300">
             Contact Our Travel Experts <i class="fas fa-headset ml-2"></i>
           </button>
         </div>
@@ -322,10 +322,10 @@
         <h2 class="text-3xl font-bold mb-6">Your Dream Vacation is Calling</h2>
         <p class="text-xl opacity-90 mb-8 max-w-3xl mx-auto">Join thousands of satisfied travelers who've discovered the world with us. Book your next adventure today!</p>
         <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-          <button class="bg-white text-blue-600 hover:bg-gray-100 px-8 py-4 rounded-md text-lg font-semibold transition duration-300">
+          <button @click="scrollToSection('features-section')" class="bg-white text-blue-600 hover:bg-gray-100 px-8 py-4 rounded-md text-lg font-semibold transition duration-300">
             Explore Tours <i class="fas fa-globe ml-2"></i>
           </button>
-          <button class="bg-transparent border-2 border-white hover:bg-white hover:text-blue-600 px-8 py-4 rounded-md text-lg font-semibold transition duration-300">
+          <button @click="handleContactUs" class="bg-transparent border-2 border-white hover:bg-white hover:text-blue-600 px-8 py-4 rounded-md text-lg font-semibold transition duration-300">
             Chat with a Travel Expert <i class="fas fa-comments ml-2"></i>
           </button>
         </div>
@@ -360,7 +360,7 @@
             <ul class="space-y-2">
               <li><a href="#" class="text-gray-400 hover:text-white transition">Help Center</a></li>
               <li><a href="#" class="text-gray-400 hover:text-white transition">Community</a></li>
-              <li><a href="#" class="text-gray-400 hover:text-white transition">Contact Us</a></li>
+              <li><a @click="handleContactUs" href="#" class="text-gray-400 hover:text-white transition">Contact Us</a></li>
               <li><a href="#" class="text-gray-400 hover:text-white transition">Status</a></li>
             </ul>
           </div>
@@ -398,6 +398,7 @@
 
 <script setup>
 import { ref } from 'vue';
+import { useRouter } from 'vue-router';
 
 // Use a reactive variable for the mobile menu state
 const isMobileMenuOpen = ref(false);
@@ -415,9 +416,34 @@ const toggleAccordion = (index) => {
   }
 };
 
-// Use your uploaded images
+// Image imports (assuming these are in a place Vite can handle)
 const pagoSampleImage1 = 'pagosample1.jpeg';
 const pagoSampleImage2 = 'pagosample2.jpeg';
+
+// Navigation & Functionality
+const router = useRouter();
+
+// Function for buttons that navigate to a new page
+const handleGetStarted = () => {
+  // Replace with the actual route name or path for your signup/start page
+  router.push('/signup');
+};
+
+const handleContactUs = () => {
+  // Replace with the actual route name or path for your contact page
+  router.push('/contact');
+};
+
+// Function for buttons that scroll to a section on the same page
+const scrollToSection = (id) => {
+  const element = document.getElementById(id);
+  if (element) {
+    element.scrollIntoView({ behavior: 'smooth' });
+    if (isMobileMenuOpen.value) {
+      isMobileMenuOpen.value = false; // Close the mobile menu after scrolling
+    }
+  }
+};
 </script>
 
 <style scoped>
