@@ -113,11 +113,24 @@ function computeFullImageUrl(item) {
   return null;
 }
 
+const retry = async (fn, retries = 5, delay = 1000) => {
+  try {
+    return await fn();
+  } catch (error) {
+    if (retries > 0) {
+      console.warn(`Failed to fetch destinations, retrying in ${delay}ms... Attempts left: ${retries - 1}`);
+      await new Promise(res => setTimeout(res, delay));
+      return retry(fn, retries - 1, delay);
+    }
+    throw error;
+  }
+};
+
 async function fetchData() {
   loading.value = true;
   error.value = null;
   try {
-    const list = await getAccommodations();
+    const list = await retry(getAccommodations);
 
     // Defensive: if backend returns { status, data: [...] } or array
     const items = Array.isArray(list) ? list : (list?.data ?? list ?? []);
@@ -165,9 +178,9 @@ async function handleSave(payload) {
 
     const id = payload.get('id');
     if (id) {
-      await updateAccommodation(id, payload);
+      await retry(()=>updateAccommodation(id, payload));
     } else {
-      await addAccommodation(payload);
+      await retry(()=>addAccommodation(payload));
     }
 
     isModalOpen.value = false;
@@ -182,7 +195,7 @@ async function handleSave(payload) {
 async function handleDelete(id) {
   if (!confirm('Delete this accommodation?')) return;
   try {
-    await deleteAccommodation(id);
+    await retry(()=>deleteAccommodation(id));
     await fetchData();
   } catch (err) {
     console.error('Failed to delete', err);

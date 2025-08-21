@@ -89,11 +89,24 @@ const isModalOpen = ref(false);
 const currentDestination = ref(null);
 const modalTitle = ref('');
 
+const retry = async (fn, retries = 5, delay = 1000) => {
+  try {
+    return await fn();
+  } catch (error) {
+    if (retries > 0) {
+      console.warn(`Failed to fetch destinations, retrying in ${delay}ms... Attempts left: ${retries - 1}`);
+      await new Promise(res => setTimeout(res, delay));
+      return retry(fn, retries - 1, delay);
+    }
+    throw error;
+  }
+};
+
 const fetchData = async () => {
   loading.value = true;
   error.value = null;
   try {
-    destinations.value = await getDestinations();
+    destinations.value = await retry(getDestinations);
   } catch (e) {
     error.value = 'Failed to fetch destinations: ' + e.message;
   } finally {
@@ -138,9 +151,9 @@ const handleSave = async (payload) => {
 
     const id = payload.get('id');
     if (id) {
-      await updateDestination(id, payload);
+      await retry(()=>updateDestination(id, payload));
     } else {
-      await addDestination(payload);
+      await retry(()=>addDestination(payload));
     }
 
     isModalOpen.value= false ;
@@ -159,7 +172,7 @@ const handleSave = async (payload) => {
 const handleDelete = async (id) => {
   if (confirm('Are you sure you want to delete this destination?')) {
     try {
-      await deleteDestination(id);
+      await retry(()=>deleteDestination(id));
       await fetchData(); // Refresh the list
     } catch (e) {
       console.error('Failed to delete destination:', e);
