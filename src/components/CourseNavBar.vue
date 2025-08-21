@@ -42,7 +42,9 @@ const toggleMobileMenu = () => {
         <transition name="fade">
             <div v-if="mobileMenuOpen" class="md:hidden bg-white shadow-lg">
                 <div class="px-6 py-4 space-y-4">
-                    <a href="#" @click="scrollTo('hero'); toggleMobileMenu()" class="block text-gray-700 hover:text-blue-600 transition">Home</a>
+                    <router-link to="/" class="text-gray-700 hover:text-blue-600 transition">
+                    HOME
+                    </router-link>
                     <a href="#" @click="scrollTo('what-you-learn'); toggleMobileMenu()" class="block text-gray-700 hover:text-blue-600 transition">What You'll Learn</a>
                     <a href="#" @click="scrollTo('course-content'); toggleMobileMenu()" class="block text-gray-700 hover:text-blue-600 transition">Course Content</a>
                     <a href="#" @click="scrollTo('certificate'); toggleMobileMenu()" class="block text-gray-700 hover:text-blue-600 transition">Certificate</a>
