@@ -10,7 +10,7 @@
         <div v-for="(feature, index) in newsFeatures" :key="feature.id"
              class="bg-red-900 rounded-lg shadow-lg overflow-hidden flex flex-col" data-aos="fade-up" :data-aos-delay="index * 150">
           <div class="relative w-full h-56 md:h-64 lg:h-72 overflow-hidden">
-            <img :src="feature.image" :alt="feature.title" class="w-full h-full object-cover"/>
+            <img loading="lazy" :src="feature.image" :alt="feature.title" class="w-full h-full object-cover"/>
           </div>
           <div class="p-6 flex flex-col items-center text-center flex-grow">
             <h3 class="text-2xl font-bold mb-2"

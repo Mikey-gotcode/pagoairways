@@ -19,7 +19,7 @@ const toggleMobileMenu = () => {
     <nav class="fixed w-full bg-white shadow-md z-50">
         <div class="container mx-auto px-6 py-3 flex justify-between items-center">
             <div class="flex items-center">
-                <img src="/assets/iatalogo.png" alt="IATA Logo" class="h-12">
+                <img loading="lazy" src="/assets/iatalogo.png" alt="IATA Logo" class="h-12">
                 <span class="ml-3 text-xl font-semibold text-blue-800">Pago Travel & Tourism Consultancy</span>
             </div>
             <div class="hidden md:flex space-x-8 items-center">

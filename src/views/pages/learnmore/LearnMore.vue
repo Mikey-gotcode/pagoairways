@@ -56,7 +56,7 @@
             </div>
           </div>
           <div class="md:w-1/2 flex justify-center">
-            <img src="https://images.unsplash.com/photo-1503220317375-aaad61436b1b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&h=400&q=80" alt="Travel Destinations" class="rounded-lg shadow-2xl w-full max-w-md">
+            <img loading="lazy" src="https://images.unsplash.com/photo-1503220317375-aaad61436b1b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&h=400&q=80" alt="Travel Destinations" class="rounded-lg shadow-2xl w-full max-w-md">
           </div>
         </div>
       </div>
@@ -130,7 +130,7 @@
         
         <div class="flex flex-col md:flex-row items-center justify-between">
           <div class="md:w-1/2 mb-10 md:mb-0">
-            <img :src="pagoSampleImage2" alt="Travel Planning" class="rounded-lg shadow-xl w-full max-w-md">
+            <img loading="lazy" :src="pagoSampleImage2" alt="Travel Planning" class="rounded-lg shadow-xl w-full max-w-md">
           </div>
           
           <div class="md:w-1/2 md:pl-12">
@@ -198,7 +198,7 @@
             </div>
             <p class="text-gray-600 mb-6">"The Bali tour was absolutely magical! Our guide took us to hidden beaches that weren't in any guidebook. The luxury accommodations exceeded our expectations."</p>
             <div class="flex items-center">
-              <img :src="pagoSampleImage1" alt="Customer" class="w-12 h-12 rounded-full mr-4">
+              <img loading="lazy" :src="pagoSampleImage1" alt="Customer" class="w-12 h-12 rounded-full mr-4">
               <div>
                 <h4 class="font-semibold">Sarah Johnson</h4>
                 <p class="text-gray-500 text-sm">Bali Explorer</p>
@@ -218,7 +218,7 @@
             </div>
             <p class="text-gray-600 mb-6">"Our European heritage tour was flawlessly planned. From the cozy chalet in Switzerland to the wine tasting in Tuscany, every moment was pure bliss."</p>
             <div class="flex items-center">
-              <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=50&h=50&q=80" alt="Customer" class="w-12 h-12 rounded-full mr-4">
+              <img loading="lazy" src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=50&h=50&q=80" alt="Customer" class="w-12 h-12 rounded-full mr-4">
               <div>
                 <h4 class="font-semibold">Michael Chen</h4>
                 <p class="text-gray-500 text-sm">European Adventurer</p>
@@ -238,7 +238,7 @@
             </div>
             <p class="text-gray-600 mb-6">"The local food tour in Mexico City was a revelation! Our guide's passion for culinary arts turned a simple meal into a cultural experience we'll never forget."</p>
             <div class="flex items-center">
-              <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=50&h=50&q=80" alt="Customer" class="w-12 h-12 rounded-full mr-4">
+              <img loading="lazy" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=50&h=50&q=80" alt="Customer" class="w-12 h-12 rounded-full mr-4">
               <div>
                 <h4 class="font-semibold">Emma Rodriguez</h4>
                 <p class="text-gray-500 text-sm">Culinary Explorer</p>

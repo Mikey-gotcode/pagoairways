@@ -96,7 +96,7 @@ const quickLinks = ref([
   { id: 'accommodations', label: 'ACCOMMODATIONS', url: '#accommodations' },
   { id: 'clients', label: 'CLIENTS', url: '#clients' },
   { id: 'reach-us', label: 'REACH US', url: '#contact' },
-  { id: 'content-manager', label: 'CONTENT MANAGER', url: 'https://pagoairways.netlify.app/login' }
+  { id: 'content-manager', label: 'CONTENT MANAGER', url: 'https://pagoairways.netlify.app/adminlogin' }
 ]);
 </script>
 

@@ -44,6 +44,12 @@
       ]">
         IATA courses
       </router-link>
+      <router-link to="/bookflight" :class="[
+        'hover:text-gray-300 transition-colors duration-200',
+        { 'hover:text-gray-600': !isTransparent, 'hover:text-gray-300': isTransparent }
+      ]">
+        Book Flight
+      </router-link>
 
         <li>
           <a href="#contact" :class="[

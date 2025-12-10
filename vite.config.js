@@ -15,10 +15,10 @@ export default defineConfig({
     port: 5173, // Ensure this matches your dev server port
     allowedHosts: [
       "localhost",
-      "https://ma3.vinscollections.shop",//backend api cor cors
-      "plus-west-hot-tournament.trycloudflare.com ",
-      "https://pagoairways.netlify.app",
-      "played-exp-officials-animal.trycloudflare.com"
+      // "https://ma3.vinscollections.shop",//backend api cor cors
+      // "plus-west-hot-tournament.trycloudflare.com ",
+      // "https://pagoairways.netlify.app",
+      "ee058022e57d.ngrok-free.app"
     ],
     cors: true, // Enable CORS for external access
   },

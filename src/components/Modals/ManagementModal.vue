@@ -66,7 +66,7 @@
             <!-- Previews: selected files (priority) -->
             <div v-if="selectedPreviews.length" class="mt-3 grid grid-cols-4 gap-3">
               <div v-for="(p, idx) in selectedPreviews" :key="idx" class="flex flex-col items-start">
-                <img :src="p.url" class="h-20 w-20 object-cover rounded-md border" alt="preview" />
+                <img loading="lazy" :src="p.url" class="h-20 w-20 object-cover rounded-md border" alt="preview" />
                 <div class="mt-1 text-xs break-all">{{ p.name }}</div>
                 <button type="button" @click="removeSelectedFile(idx)" class="mt-1 text-xs px-2 py-1 border rounded">Remove</button>
               </div>
@@ -74,7 +74,7 @@
 
             <!-- If no selected files show existing stored image preview (if present) -->
             <div v-else-if="existingImageUrl" class="mt-3 flex items-center space-x-4">
-              <img :src="existingImageUrl" alt="existing" class="h-20 w-20 object-cover rounded-md border" />
+              <img loading="lazy" :src="existingImageUrl" alt="existing" class="h-20 w-20 object-cover rounded-md border" />
               <div>
                 <p class="text-sm text-gray-700 break-all">{{ existingImageFileName }}</p>
                 <div class="mt-2 space-x-2">

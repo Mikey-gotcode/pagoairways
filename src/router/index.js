@@ -4,9 +4,19 @@ import CourseIndex from "@/views/pages/schooling/CourseIndex.vue";
 import AdminIndex from "@/views/pages/admins/AdminIndex.vue";
 import LearnMoreIndex from "@/views/pages/learnmore/LearnMore.vue";
 import DestinationManager from "@/components/DestinationManager.vue";
+import FlightsIndex from "@/views/pages/flights/FlightsIndex.vue";
 import AccommodationManager from "@/components/AccommodationManager.vue";
 import Login from "@/views/pages/auth/Login.vue";
 import Settings from "@/components/Settings.vue";
+import SearchFlights from "@/views/pages/flights/SearchFlights.vue";
+import PreviewFlights from "@/views/pages/flights/PreviewFlights.vue";
+import FlightsPayments from "@/views/pages/flights/FlightsPayments.vue";
+import GenericGoogle from "@/views/pages/auth/GenericGoogle.vue";
+import AuthCallback from "@/views/pages/auth/AuthCallback.vue";
+import UserDashboard from "@/views/pages/dashboards/UserDashboard.vue";
+import UserFlights from "@/views/pages/dashboards/UserFlights.vue";
+import UserProfile from "@/views/pages/dashboards/UserProfile.vue";
+import UserIndex from "@/views/pages/dashboards/UserIndex.vue";
 
 
 const routes = [
@@ -18,7 +28,29 @@ const routes = [
         path:'/IATA',
         component:CourseIndex
     }
+    ,{
+        path:'/dashboard',
+        component:UserIndex,
+        children:[
+            {path:'',redirect:'/dashboard/main'},
+            {path:'main',component:UserDashboard},
+            {path:'flights',component:UserFlights},
+            {path:'profile',component:UserProfile}
+        ]
+    }
     ,
+    
+    {
+        path:'/bookflight',
+        component:FlightsIndex,
+        children:[
+            {path:'',redirect:'/bookflight/searchflight'},
+            {path:'searchflight', component:SearchFlights},
+            {path:'previewflight', component:PreviewFlights},
+            {path:'payment', component:FlightsPayments}
+        ]
+
+    },
      {
         path:'/learnmore',
         component:LearnMoreIndex
@@ -35,9 +67,18 @@ const routes = [
         ]
     },
     {
-        path:'/login',
+        path:'/adminlogin',
         component:Login
-    }
+    },
+    {
+        path:'/login',
+        component:GenericGoogle
+    },
+    {
+      path: '/auth/callback', // Must match the successURL from your Go handler
+      name: 'auth-callback',
+      component: AuthCallback
+    },
 ]
 
 export const router = createRouter({

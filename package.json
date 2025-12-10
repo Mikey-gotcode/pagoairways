@@ -12,6 +12,7 @@
     "aos": "^2.3.4",
     "axios": "^1.11.0",
     "cors": "^2.8.5",
+    "feather-icons": "^4.29.2",
     "nodemailer": "^7.0.5",
     "primeicons": "^7.0.0",
     "primevue": "^4.3.5",

@@ -9,7 +9,7 @@
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <div v-for="(destination, index) in destinations" :key="destination.id"
              :data-aos="getAosAnimation()" :data-aos-delay="getAosDelay(index)" class="bg-red-900 bg-opacity-70 rounded-lg shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105">
-          <img :src="destination.image_url" :alt="destination.name" class="w-full h-48 object-cover">
+          <img loading="lazy" :src="destination.image_url" :alt="destination.name" class="w-full h-48 object-cover">
           <div class="p-6">
             <h3 class="text-2xl font-semibold mb-3"
                 style="font-family: 'Playfair Display', serif; color: #ffb7c5;">
