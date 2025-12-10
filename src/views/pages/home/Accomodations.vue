@@ -101,13 +101,18 @@ const fetchAccommodations = async () => {
     // Wrap the API call with the retry function
     const responseData = await retry(getAccommodations);
     
-    // Assuming getAccommodations returns the JSON object directly (e.g., Axios response.data)
-    // and we need to access the 'data' key as shown in your JSON sample:
-    if (responseData && responseData.status === 'success' && Array.isArray(responseData.data)) {
+    // Check if the response is the array of data directly
+    if (Array.isArray(responseData)) {
+        // If responseData is the array, use it directly
+        accommodations.value = responseData;
+        
+    } else if (responseData && Array.isArray(responseData.data)) {
+        // If responseData is wrapped in a 'data' object (the old way), use the 'data' key
         accommodations.value = responseData.data;
+        
     } else {
-        // Handle case where API response is unexpected, even if the call succeeded
-        console.error("API call succeeded but returned unexpected data structure:", responseData);
+        // Handle all other unexpected cases
+        console.error("API call succeeded but returned an unexpected or empty data structure:", responseData);
         accommodations.value = [];
     }
 
