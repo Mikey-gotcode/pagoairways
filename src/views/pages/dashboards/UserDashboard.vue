@@ -28,7 +28,7 @@
               <div class="ml-3 relative">
                 <div class="flex items-center">
                   <button @click="openProfile()" class="flex text-sm rounded-full focus:outline-none">
-                    <img loading="lazy" class="h-8 w-8 rounded-full" :src="user.avatar" alt="User profile" />
+                    <img loading="eager" class="h-8 w-8 rounded-full" :src="user.avatar" alt="User profile" />
                   </button>
                 </div>
               </div>
@@ -163,7 +163,7 @@
 
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <div v-for="stay in accommodations" :key="stay.id" class="bg-white rounded-xl shadow-sm overflow-hidden card-hover">
-              <img loading="lazy" class="h-40 w-full object-cover" :src="stay.image" alt="Hotel" />
+              <img loading="eager" class="h-40 w-full object-cover" :src="stay.image" alt="Hotel" />
               <div class="p-6">
                 <div class="flex justify-between">
                   <h3 class="text-lg font-bold text-gray-900">{{ stay.title }}</h3>

@@ -34,7 +34,7 @@
                     </div>
                     <div class="md:w-1/2 flex justify-center">
                         <div class="relative">
-                            <img loading="lazy" src="/assets/images/tvp-tp_certificates.webp" 
+                            <img loading="eager" src="/assets/images/tvp-tp_certificates.webp" 
                                  alt="IATA Certificate" 
                                  class="rounded-xl shadow-2xl max-w-md w-full floating">
                             <div class="absolute -bottom-6 -right-6 bg-yellow-400 p-4 rounded-full shadow-xl">

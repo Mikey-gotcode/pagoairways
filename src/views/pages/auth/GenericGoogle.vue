@@ -23,7 +23,7 @@
       </div>
 
       <button @click="signInWithGoogle" class="google-btn">
-        <img loading="lazy" src="https://www.google.com/favicon.ico" alt="Google logo" class="google-logo" />
+        <img loading="eager" src="https://www.google.com/favicon.ico" alt="Google logo" class="google-logo" />
         {{ isLogin ? 'Sign in with Google' : 'Sign up with Google' }}
       </button>
 

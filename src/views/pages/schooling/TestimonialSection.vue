@@ -10,7 +10,7 @@
                 <div class="grid md:grid-cols-3 gap-8">
                     <div class="bg-gray-50 rounded-xl p-8 shadow-md">
                         <div class="flex items-center mb-6">
-                            <img loading="lazy" src="https://randomuser.me/api/portraits/women/44.jpg" alt="Student" class="w-16 h-16 rounded-full object-cover mr-4">
+                            <img loading="eager" src="https://randomuser.me/api/portraits/women/44.jpg" alt="Student" class="w-16 h-16 rounded-full object-cover mr-4">
                             <div>
                                 <h4 class="font-semibold text-blue-800">Sarah Johnson</h4>
                                 <p class="text-gray-500 text-sm">Travel Consultant @ Expedia</p>
@@ -30,7 +30,7 @@
                     
                     <div class="bg-gray-50 rounded-xl p-8 shadow-md">
                         <div class="flex items-center mb-6">
-                            <img loading="lazy" src="https://randomuser.me/api/portraits/men/32.jpg" alt="Student" class="w-16 h-16 rounded-full object-cover mr-4">
+                            <img loading="eager" src="https://randomuser.me/api/portraits/men/32.jpg" alt="Student" class="w-16 h-16 rounded-full object-cover mr-4">
                             <div>
                                 <h4 class="font-semibold text-blue-800">Michael Chen</h4>
                                 <p class="text-gray-500 text-sm">Travel Agency Owner</p>
@@ -50,7 +50,7 @@
                     
                     <div class="bg-gray-50 rounded-xl p-8 shadow-md">
                         <div class="flex items-center mb-6">
-                            <img loading="lazy" src="https://randomuser.me/api/portraits/women/68.jpg" alt="Student" class="w-16 h-16 rounded-full object-cover mr-4">
+                            <img loading="eager" src="https://randomuser.me/api/portraits/women/68.jpg" alt="Student" class="w-16 h-16 rounded-full object-cover mr-4">
                             <div>
                                 <h4 class="font-semibold text-blue-800">Aisha Mohammed</h4>
                                 <p class="text-gray-500 text-sm">Tourism Consultant</p>

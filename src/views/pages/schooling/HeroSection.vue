@@ -27,7 +27,7 @@ import {scrollTo, showVideoModal} from '@/helper'
                     </div>
                 </div>
                 <div class="md:w-1/2 flex justify-center">
-                    <img loading="lazy" src="https://images.unsplash.com/photo-1506197603052-3cc9c3a201bd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                    <img loading="eager" src="https://images.unsplash.com/photo-1506197603052-3cc9c3a201bd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
                          alt="Travel destinations" 
                          class="rounded-xl shadow-2xl floating max-w-md w-full">
                 </div>

@@ -73,7 +73,7 @@
              class="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100 transition-all duration-300 hover:shadow-xl">
 
           <div class="relative">
-              <img loading="lazy" :src="flight.image_url || 'https://via.placeholder.com/600x400?text=Flight+Logo'" :alt="flight.airline"
+              <img loading="eager" :src="flight.image_url || 'https://via.placeholder.com/600x400?text=Flight+Logo'" :alt="flight.airline"
                    class="w-full h-48 object-cover bg-gray-100 p-2" />
 
               <div class="absolute top-2 right-2 text-xs font-semibold py-1 px-3 rounded-lg text-white"

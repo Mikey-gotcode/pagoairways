@@ -73,7 +73,7 @@
              class="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100 transition-all duration-300 hover:shadow-xl">
           
           <div class="relative">
-              <img loading="lazy" :src="accommodation.image_url" :alt="accommodation.name" 
+              <img loading="eager" :src="accommodation.image_url" :alt="accommodation.name" 
                    class="w-full h-48 object-cover" />
               
               <div class="absolute top-2 right-2 text-xs font-semibold py-1 px-3 rounded-lg text-white"

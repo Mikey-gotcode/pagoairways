@@ -23,7 +23,7 @@
             <div class="ml-3 relative">
               <div class="flex items-center">
                 <button class="flex text-sm rounded-full focus:outline-none">
-                  <img loading="lazy" :src="user.avatar" alt="User profile" class="h-8 w-8 rounded-full" />
+                  <img loading="eager" :src="user.avatar" alt="User profile" class="h-8 w-8 rounded-full" />
                 </button>
               </div>
             </div>

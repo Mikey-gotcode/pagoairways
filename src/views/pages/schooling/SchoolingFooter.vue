@@ -3,7 +3,7 @@
         <div class="container mx-auto px-6">
             <div class="grid md:grid-cols-4 gap-12">
                 <div>
-                    <img loading="lazy" src="/assets/iatalogo.png" alt="IATA Logo" class="h-12 mb-4">
+                    <img loading="eager" src="/assets/iatalogo.png" alt="IATA Logo" class="h-12 mb-4">
                     <p class="text-gray-400">
                         The International Air Transport Association is the trade association for the world's airlines, representing over 290 airlines or 83% of total air traffic.
                     </p>

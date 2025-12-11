@@ -42,7 +42,7 @@
           <div class="flex flex-col md:flex-row justify-between items-start md:items-center">
             <div class="flex items-center mb-4 md:mb-0">
               <div class="bg-white p-3 rounded-lg shadow-sm mr-4">
-                <img loading="lazy" src="http://static.photos/airline/200x200/1" alt="Airline" class="w-12 h-12 object-contain" />
+                <img loading="eager" src="http://static.photos/airline/200x200/1" alt="Airline" class="w-12 h-12 object-contain" />
               </div>
               <div>
                 <h4 class="font-bold text-lg text-black">Outbound Flight</h4>
@@ -98,7 +98,7 @@
           <div class="flex flex-col md:flex-row justify-between items-start md:items-center">
             <div class="flex items-center mb-4 md:mb-0">
               <div class="bg-white p-3 rounded-lg shadow-sm mr-4">
-                <img loading="lazy" src="http://static.photos/airline/200x200/2" alt="Airline" class="w-12 h-12 object-contain" />
+                <img loading="eager" src="http://static.photos/airline/200x200/2" alt="Airline" class="w-12 h-12 object-contain" />
               </div>
               <div>
                 <h4 class="font-bold text-lg text-black">Return Flight</h4>

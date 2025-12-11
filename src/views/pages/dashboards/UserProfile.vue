@@ -30,7 +30,7 @@
             <div class="ml-3 relative">
               <div class="flex items-center">
                 <button class="flex text-sm rounded-full focus:outline-none" @click="toggleProfileMenu">
-                  <img loading="lazy" :src="form.avatar" alt="User profile" lazy class="h-8 w-8 rounded-full" />
+                  <img loading="eager" :src="form.avatar" alt="User profile" eager class="h-8 w-8 rounded-full" />
                 </button>
               </div>
             </div>
@@ -55,7 +55,7 @@
 
         <div class="px-6 py-6">
           <div class="flex items-center mb-8">
-            <img loading="lazy" :src="form.avatar" alt="User profile" class="h-20 w-20 rounded-full object-cover" />
+            <img loading="eager" :src="form.avatar" alt="User profile" class="h-20 w-20 rounded-full object-cover" />
             <div class="ml-6">
               <label
                 for="photo-upload"

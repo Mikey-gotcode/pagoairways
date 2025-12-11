@@ -38,7 +38,7 @@
             </button>
             <div class="relative" v-if="userData">
               <button @click="toggleDropdown" class="flex items-center space-x-2 focus:outline-none">
-                <img loading="lazy" src="https://randomuser.me/api/portraits/women/44.jpg" alt="Profile" class="w-8 h-8 rounded-full">
+                <img loading="eager" src="https://randomuser.me/api/portraits/women/44.jpg" alt="Profile" class="w-8 h-8 rounded-full">
                 <span class="hidden md:inline text-gray-700 font-medium">{{ userData.name }}</span>
                 <i class="fas fa-chevron-down text-xs text-gray-500"></i>
               </button>
