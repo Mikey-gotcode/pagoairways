@@ -264,10 +264,30 @@ export const changePassword = async (current_password, new_password, new_passwor
 };
 
 /* Accommodations */
-export async function getAccommodations() {
-  const resp = await api.get('/accommodations');
-  return normalizeResponseData(resp.data);
+export async function getAccommodations(destinationFilter = null) {
+  // 1. Define the query parameters object
+  const params = {};
+
+  // 2. If a filter is provided, add it to the params object
+  if (destinationFilter) {
+    // Axios will automatically handle URL encoding this parameter
+    params.destination = destinationFilter;
+    
+    // Debug logging to see the filter being applied
+    console.log(`[API ACCOMMODATIONS] Applying filter: destination=${destinationFilter}`);
+  }
+
+  try {
+    // 3. Pass the params object in the Axios config
+    const resp = await api.get('/accommodations', { params });
+    
+    return normalizeResponseData(resp.data);
+  } catch (error) {
+    console.error('Error fetching accommodations:', error.response ? error.response.data : error.message);
+    throw error;
+  }
 }
+
 
 export async function addAccommodation(data) {
   // If already FormData
