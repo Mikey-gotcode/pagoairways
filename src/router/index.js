@@ -6,6 +6,8 @@ import LearnMoreIndex from "@/views/pages/learnmore/LearnMore.vue";
 import DestinationManager from "@/components/DestinationManager.vue";
 import FlightsIndex from "@/views/pages/flights/FlightsIndex.vue";
 import AccommodationManager from "@/components/AccommodationManager.vue";
+import FlightsManager from "@/components/FlightsManager.vue";
+
 import Login from "@/views/pages/auth/Login.vue";
 import Settings from "@/components/Settings.vue";
 import SearchFlights from "@/views/pages/flights/SearchFlights.vue";
