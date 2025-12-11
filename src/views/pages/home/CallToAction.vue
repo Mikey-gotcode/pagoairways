@@ -1,5 +1,5 @@
 <template>
-  <div id="call-to-action-section" class="relative h-screen w-full overflow-hidden">
+  <div **id="call-to-action-section"** class="relative h-screen w-full overflow-hidden">
     <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover" :src="videoSource" type="video/mp4">
         Your browser does not support the video tag.
     </video>

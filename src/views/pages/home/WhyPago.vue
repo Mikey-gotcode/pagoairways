@@ -1,5 +1,5 @@
 <template>
-  <section class="min-h-screen flex flex-col">
+  <section **id="aboutus"** class="min-h-screen flex flex-col">
     <div class="flex flex-col lg:flex-row flex-grow"> <div class="w-full lg:w-1/2 flex items-center justify-center p-8 lg:p-16 bg-white text-center lg:text-left">
         <h2 class="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-tight"
             style="font-family: 'Playfair Display', serif; color: #2A47EEFF;"

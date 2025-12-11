@@ -21,7 +21,7 @@
 
       <ul :class="['hidden md:flex space-x-6', { 'text-gray-800': !isTransparent, 'text-white': isTransparent }]">
         <li>
-          <a href="#home" :class="[
+          <a href="#call-to-action-section" :class="[
             'hover:text-gray-300 transition-colors duration-200',
             { 'hover:text-gray-600': !isTransparent, 'hover:text-gray-300': isTransparent }
           ]">Home</a>
@@ -44,12 +44,12 @@
       ]">
         IATA courses
       </router-link>
-      <router-link to="/bookflight" :class="[
+      <!-- <router-link to="/bookflight" :class="[
         'hover:text-gray-300 transition-colors duration-200',
         { 'hover:text-gray-600': !isTransparent, 'hover:text-gray-300': isTransparent }
       ]">
         Book Flight
-      </router-link>
+      </router-link> -->
 
         <li>
           <a href="#contact" :class="[
