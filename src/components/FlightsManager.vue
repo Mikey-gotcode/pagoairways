@@ -26,7 +26,7 @@
       <template v-if="flights.length > 0">
         <div v-for="flight in flights" :key="flight.id" class="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center text-center">
           <img
-            :src="flight.image_url || 'https://via.placeholder.com/400x200?text=Flight+Logo'"
+            :src="flight.image_url"
             :alt="flight.airline"
             class="rounded-lg w-full h-48 object-cover mb-4 shadow"
           />

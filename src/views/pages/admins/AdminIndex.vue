@@ -23,6 +23,9 @@
             <router-link to="/super-admin/destinations" :class="navLinkClass('/destinations')">
               Destinations
             </router-link>
+            <router-link to="/super-admin/flightsAdd" :class="navLinkClass('/flightsAdd')">
+              Destinations
+            </router-link>
           </div>
 
           <!-- Right side items -->
@@ -83,7 +86,7 @@
                 <i class="fas fa-map-marked-alt text-lg"></i>
                 <span>Destinations</span>
               </router-link>
-              <router-link to="/super-admin/destinations" :class="sidebarLinkClass('/flights')">
+              <router-link to="/super-admin/flightsAdd" :class="sidebarLinkClass('/flightsAdd')">
                 <i class="fas fa-map-marked-alt text-lg"></i>
                 <span>Flights</span>
               </router-link>
