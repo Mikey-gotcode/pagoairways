@@ -162,7 +162,7 @@ async function fetchData() {
 }
 
 function handleAdd() {
-  currentAccommodation.value = { id: null, name: '', capacity: '', price: '', status: '' };
+  currentAccommodation.value = { id: null, name: '', destination:'',capacity: '', price: '', status: '' };
   modalTitle.value = 'Add New Accommodation';
   isModalOpen.value = true;
 }
