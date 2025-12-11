@@ -87,6 +87,7 @@
                 style="font-family: 'Playfair Display', serif;">
                 {{ accommodation.name }}
             </h4>
+            <p class="text-gray-600 text-sm mb-2">Destination: {{ accommodation.destination || 'N/A' }}</p> 
             <p class="text-gray-600 text-sm mb-2">{{ accommodation.capacity }}</p>
             
             <div class="flex justify-between items-center mb-4">
@@ -107,7 +108,6 @@
 
 <script setup>
 import { onMounted, ref } from 'vue';
-// Import both API methods
 import { getAccommodations, getDestinations } from '@/api';
 
 // --- STATE ---
@@ -116,13 +116,13 @@ const destinations = ref([]);
 const selectedCountry = ref(null);
 const hoveredDestination = ref(null);
 
-// --- UTILITY: Retry Logic ---
+// --- UTILITY: Retry Logic (Unchanged) ---
 const retry = async (fn, retries = 5, delay = 1000) => {
   try {
     return await fn();
   } catch (error) {
     if (retries > 0) {
-      console.warn(`Failed to execute function, retrying in ${delay}ms... Attempts left: ${retries - 1}`);
+      console.warn(`[RETRY LOGIC] Function failed, retrying in ${delay}ms... Attempts left: ${retries - 1}`);
       await new Promise(res => setTimeout(res, delay));
       return retry(fn, retries - 1, delay);
     }
@@ -132,62 +132,79 @@ const retry = async (fn, retries = 5, delay = 1000) => {
 
 // --- DATA FETCHING ---
 
-// 1. Fetch Accommodations (Handles Array or Object structure)
 const fetchAccommodations = async () => {
+  // 🎯 LOG 1: What filter value is being sent to the backend?
+  console.log(`[ACCOMMODATIONS FETCH] Starting fetch. Selected country filter: ${selectedCountry.value}`);
+  
   try {
-    // Pass selectedCountry.value to the API call if your backend supports filtering by country
-    // If client-side filtering is needed instead, fetch all and filter locally. 
-    // Assuming backend filtering here:
+    // getAccommodations(selectedCountry.value) is where the API call happens
     const responseData = await retry(() => getAccommodations(selectedCountry.value));
     
-    // Normalize response
     let dataToUse = [];
     if (Array.isArray(responseData)) {
         dataToUse = responseData;
     } else if (responseData && Array.isArray(responseData.data)) {
         dataToUse = responseData.data;
     } else {
-        console.error("Accommodation API returned unexpected data structure:", responseData);
+        console.error("[ACCOMMODATIONS FETCH] API returned unexpected data structure:", responseData);
         accommodations.value = [];
         return;
     }
 
-    // Optional: Client-side filtering if backend doesn't handle it
-    // if (selectedCountry.value) {
-    //    dataToUse = dataToUse.filter(acc => acc.country === selectedCountry.value);
-    // }
-
     accommodations.value = dataToUse;
+    
+    // 🎯 LOG 2: How many results did the backend return?
+    console.log(`[ACCOMMODATIONS FETCH] Success. Total items received: ${dataToUse.length}`);
+    
+    // 🎯 LOG 3: Inspect the first item's destination property for a successful match.
+    if (dataToUse.length > 0) {
+        console.log(`[ACCOMMODATIONS FETCH] First item destination property: ${dataToUse[0].destination}`);
+    }
+
 
   } catch (error) {
-    console.error('Failed to fetch accommodations after multiple retries:', error);
+    console.error('[ACCOMMODATIONS FETCH] Failed to fetch after multiple retries:', error);
   }
 };
 
-// 2. Fetch Destinations (Handles Array or Object structure)
 const fetchDestinations = async () => {
+  console.log("[DESTINATIONS FETCH] Starting fetch for popular destinations list.");
   try {
     const responseData = await retry(getDestinations);
     
+    let destinationArray = [];
+
     if (Array.isArray(responseData)) {
-        destinations.value = responseData;
+        destinationArray = responseData;
     } else if (responseData && Array.isArray(responseData.data)) {
-        destinations.value = responseData.data;
+        destinationArray = responseData.data;
     } else {
-        console.error("Destination API returned unexpected data structure:", responseData);
+        console.error("[DESTINATIONS FETCH] API returned unexpected data structure:", responseData);
         destinations.value = [];
+        return;
     }
+
+    destinations.value = destinationArray;
+    
+    // 🎯 LOG 4: Log the names that were loaded into the destination list.
+    const destinationNames = destinationArray.map(d => d.name);
+    console.log(`[DESTINATIONS FETCH] Success. Loaded destination names: ${destinationNames.join(', ')}`);
+
+
   } catch (error) {
-    console.error('Failed to fetch destinations after multiple retries:', error);
+    console.error('[DESTINATIONS FETCH] Failed to fetch destinations after multiple retries:', error);
   }
 };
 
 // --- EVENT HANDLERS ---
 
 const handleCountrySelect = (countryName) => {
+    // 🎯 LOG 5: What destination name was clicked?
+    console.log(`[COUNTRY SELECT] User selected: ${countryName}. Setting filter.`);
+
     selectedCountry.value = countryName;
+    
     // Re-fetch accommodations based on the new selection
-    // Note: This relies on getAccommodations accepting an argument, or you filtering client-side
     fetchAccommodations();
     
     // Smooth scroll to accommodations
@@ -197,11 +214,12 @@ const handleCountrySelect = (countryName) => {
 };
 
 const clearCountrySelection = () => {
+    console.log("[COUNTRY SELECT] Clearing country selection. Resetting filter to null.");
     selectedCountry.value = null;
     fetchAccommodations(); // Fetch all again
 };
 
-// --- TEMPLATE HELPERS ---
+// --- TEMPLATE HELPERS (Unchanged) ---
 
 const getSeverityClass = (status) => {
   switch (status) {
@@ -222,7 +240,7 @@ const getAffiliateLink = (countryName) => {
     return dest ? dest.affiliate_link : '#';
 };
 
-// --- LIFECYCLE ---
+// --- LIFECYCLE (Unchanged) ---
 onMounted(() => {
   fetchDestinations();
   fetchAccommodations();
