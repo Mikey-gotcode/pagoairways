@@ -24,7 +24,7 @@
               Destinations
             </router-link>
             <router-link to="/super-admin/flightsAdd" :class="navLinkClass('/flightsAdd')">
-              Destinations
+              Flights
             </router-link>
           </div>
 
