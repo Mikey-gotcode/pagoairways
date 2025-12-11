@@ -8,7 +8,7 @@
         <div class="relative max-w-md">
           <input type="text" placeholder="Search destinations..." class="w-full py-3 px-4 rounded-full text-gray-800 focus:outline-none">
           <button class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-indigo-600 text-white p-2 rounded-full">
-            <i data-feather="search"></i>
+            <i class="pi pi-search"></i> 
           </button>
         </div>
       </div>
@@ -16,25 +16,61 @@
 
     <section class="mb-16">
       <h2 class="text-3xl font-bold mb-8 text-gray-800">Popular Destinations</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      
+      <div v-if="destinations.length === 0" class="text-center py-10 text-gray-500">
+        Loading destinations...
+      </div>
+
+      <div v-else class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div v-for="destination in destinations" :key="destination.id" 
+             class="destination-card relative overflow-hidden rounded-xl shadow-lg cursor-pointer transition-all duration-300 hover:shadow-2xl"
+             @mouseenter="hoveredDestination = destination.id"
+             @mouseleave="hoveredDestination = null"
+             @click="handleCountrySelect(destination.name)">
+             
+            <img :src="destination.image_url" :alt="destination.name" class="w-full h-64 object-cover">
+            
+            <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center transition-opacity duration-300"
+                 :class="{'opacity-0': hoveredDestination !== destination.id, 'opacity-100': hoveredDestination === destination.id}">
+                <h3 class="text-white text-3xl font-bold">{{ destination.name }}</h3>
+            </div>
         </div>
+      </div>
     </section>
     
+    <section v-if="selectedCountry" class="mb-16">
+        <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-3xl font-bold text-gray-800">{{ selectedCountry }}</h2>
+                <button @click="clearCountrySelection" class="text-indigo-600 hover:text-indigo-800 font-bold">
+                    Close (X)
+                </button>
+            </div>
+
+            <div class="mb-8">
+                <h3 class="text-xl font-semibold mb-4 text-gray-700">About {{ selectedCountry }}</h3>
+                <p class="text-gray-600">{{ getDestinationDescription(selectedCountry) }}</p>
+                <a :href="getAffiliateLink(selectedCountry)" target="_blank" class="mt-4 inline-block bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition">
+                    Explore More
+                </a>
+            </div>
+        </div>
+    </section>
+
     <section class="mb-16">
       <h2 class="text-3xl font-bold mb-8 text-gray-800"
           style="font-family: 'Playfair Display', serif;">
-        Available Accommodations
+        {{ selectedCountry ? `Accommodations in ${selectedCountry}` : 'Available Accommodations' }}
       </h2>
       
       <div v-if="accommodations.length === 0" class="text-center py-10 text-gray-500">
-        Loading accommodations...
+        {{ selectedCountry ? 'No accommodations found for this destination.' : 'Loading accommodations...' }}
       </div>
       
       <div v-else class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <div v-for="accommodation in accommodations" 
              :key="accommodation.id" 
-             class="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100 transition-all duration-300 hover:shadow-xl"
-             data-aos="zoom-in" :data-aos-delay="accommodation.id * 50">
+             class="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100 transition-all duration-300 hover:shadow-xl">
           
           <div class="relative">
               <img loading="lazy" :src="accommodation.image_url" :alt="accommodation.name" 
@@ -65,29 +101,28 @@
         </div>
       </div>
     </section>
-    <section v-if="selectedCountry" class="mb-16">
-      </section>
+
   </main>
 </template>
 
 <script setup>
 import { onMounted, ref } from 'vue';
-// Removed PrimeVue component imports (Carousel, Tag, Button)
+// Import both API methods
+import { getAccommodations, getDestinations } from '@/api';
 
-// Keeping the external API call utility import
-import { getAccommodations } from '@/api';
-
-// State for accommodation data and other reactive variables
+// --- STATE ---
 const accommodations = ref([]);
-const selectedCountry = ref(null); // Assuming this is needed for the Country Details section
+const destinations = ref([]); 
+const selectedCountry = ref(null);
+const hoveredDestination = ref(null);
 
-// The original retry function (retained)
+// --- UTILITY: Retry Logic ---
 const retry = async (fn, retries = 5, delay = 1000) => {
   try {
     return await fn();
   } catch (error) {
     if (retries > 0) {
-      console.warn(`Failed to fetch accommodations, retrying in ${delay}ms... Attempts left: ${retries - 1}`);
+      console.warn(`Failed to execute function, retrying in ${delay}ms... Attempts left: ${retries - 1}`);
       await new Promise(res => setTimeout(res, delay));
       return retry(fn, retries - 1, delay);
     }
@@ -95,59 +130,105 @@ const retry = async (fn, retries = 5, delay = 1000) => {
   }
 };
 
-// The original fetch function (retained)
+// --- DATA FETCHING ---
+
+// 1. Fetch Accommodations (Handles Array or Object structure)
 const fetchAccommodations = async () => {
   try {
-    // Wrap the API call with the retry function
-    const responseData = await retry(getAccommodations);
+    // Pass selectedCountry.value to the API call if your backend supports filtering by country
+    // If client-side filtering is needed instead, fetch all and filter locally. 
+    // Assuming backend filtering here:
+    const responseData = await retry(() => getAccommodations(selectedCountry.value));
     
-    // Check if the response is the array of data directly
+    // Normalize response
+    let dataToUse = [];
     if (Array.isArray(responseData)) {
-        // If responseData is the array, use it directly
-        accommodations.value = responseData;
-        
+        dataToUse = responseData;
     } else if (responseData && Array.isArray(responseData.data)) {
-        // If responseData is wrapped in a 'data' object (the old way), use the 'data' key
-        accommodations.value = responseData.data;
-        
+        dataToUse = responseData.data;
     } else {
-        // Handle all other unexpected cases
-        console.error("API call succeeded but returned an unexpected or empty data structure:", responseData);
+        console.error("Accommodation API returned unexpected data structure:", responseData);
         accommodations.value = [];
+        return;
     }
+
+    // Optional: Client-side filtering if backend doesn't handle it
+    // if (selectedCountry.value) {
+    //    dataToUse = dataToUse.filter(acc => acc.country === selectedCountry.value);
+    // }
+
+    accommodations.value = dataToUse;
 
   } catch (error) {
     console.error('Failed to fetch accommodations after multiple retries:', error);
-    // Optionally display an error message to the user here
   }
 };
 
-// New function to map status to Tailwind CSS classes (adapted from getSeverity)
+// 2. Fetch Destinations (Handles Array or Object structure)
+const fetchDestinations = async () => {
+  try {
+    const responseData = await retry(getDestinations);
+    
+    if (Array.isArray(responseData)) {
+        destinations.value = responseData;
+    } else if (responseData && Array.isArray(responseData.data)) {
+        destinations.value = responseData.data;
+    } else {
+        console.error("Destination API returned unexpected data structure:", responseData);
+        destinations.value = [];
+    }
+  } catch (error) {
+    console.error('Failed to fetch destinations after multiple retries:', error);
+  }
+};
+
+// --- EVENT HANDLERS ---
+
+const handleCountrySelect = (countryName) => {
+    selectedCountry.value = countryName;
+    // Re-fetch accommodations based on the new selection
+    // Note: This relies on getAccommodations accepting an argument, or you filtering client-side
+    fetchAccommodations();
+    
+    // Smooth scroll to accommodations
+    setTimeout(() => {
+        window.scrollTo({ top: window.scrollY + 400, behavior: 'smooth' });
+    }, 100);
+};
+
+const clearCountrySelection = () => {
+    selectedCountry.value = null;
+    fetchAccommodations(); // Fetch all again
+};
+
+// --- TEMPLATE HELPERS ---
+
 const getSeverityClass = (status) => {
   switch (status) {
-    case 'Available':
-      return 'bg-green-500'; // Success color
-    case 'Limited':
-      return 'bg-yellow-500'; // Warning color
-    case 'Booked':
-      return 'bg-red-500'; // Danger color
-    default:
-      return 'bg-blue-500'; // Info color
+    case 'Available': return 'bg-green-500';
+    case 'Limited': return 'bg-yellow-500';
+    case 'Booked': return 'bg-red-500';
+    default: return 'bg-blue-500';
   }
 };
 
-// Removed responsiveOptions as it was only for PrimeVue Carousel
+const getDestinationDescription = (countryName) => {
+    const dest = destinations.value.find(d => d.name === countryName);
+    return dest ? dest.description : 'Description not found.';
+};
 
+const getAffiliateLink = (countryName) => {
+    const dest = destinations.value.find(d => d.name === countryName);
+    return dest ? dest.affiliate_link : '#';
+};
+
+// --- LIFECYCLE ---
 onMounted(() => {
+  fetchDestinations();
   fetchAccommodations();
 });
-
-// Helper functions for the Destination sections would need to be added here if they were part of the original script
-// e.g., const destinations = ref([...]);
-// const getDestinationDescription = (country) => { /* ... */ };
-// const getAffiliateLink = (country) => { /* ... */ };
 </script>
 
 <style scoped>
-/* Removed old section styles and kept any original main styles if applicable */
+/* Scoped styles if needed, though Tailwind handles most styling */
 </style>
