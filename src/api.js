@@ -393,3 +393,92 @@ export async function deleteDestination(id) {
   const resp = await api.delete(`/destinations/${id}`);
   return resp.data;
 }
+
+/* -------------------- NEW FLIGHTS API METHODS -------------------- */
+
+/**
+ * Retrieves a list of flights, optionally filtered by destination.
+ * @param {string | null} destinationFilter The destination to filter by.
+ */
+export async function getFlights(destinationFilter = null) {
+  const params = {};
+  
+  // 1. Add filtering logic for destination
+  if (destinationFilter) {
+    params.destination = destinationFilter;
+    console.log(`[API FLIGHTS] Applying filter: destination=${destinationFilter}`);
+  }
+
+  try {
+    // 2. Use the 'flights' endpoint and pass the params for filtering
+    const resp = await api.get('/flights', { params });
+    
+    return normalizeResponseData(resp.data);
+  } catch (error) {
+    console.error('Error fetching flights:', error.response ? error.response.data : error.message);
+    throw error;
+  }
+}
+
+/**
+ * Adds a new flight record. Supports JSON or FormData (for image uploads).
+ */
+export async function addFlight(data) {
+  // Use formClient for FormData uploads
+  if (data instanceof FormData) {
+    const client = formClient();
+    const resp = await client.post('/flights', data);
+    return normalizeResponseData(resp.data);
+  }
+
+  // Convert plain object to FormData if needed
+  if (typeof data === 'object') {
+    const fd = objectToFormData(data);
+    const client = formClient();
+    const resp = await client.post('/flights', fd);
+    return normalizeResponseData(resp.data);
+  }
+
+  // Fallback to JSON post
+  const resp = await api.post('/flights', data);
+  return normalizeResponseData(resp.data);
+}
+
+/**
+ * Updates an existing flight record by ID. Supports JSON or FormData.
+ */
+export async function updateFlight(id, data) {
+  // Use formClient for FormData uploads (Laravel often requires POST for updates with FormData)
+  if (data instanceof FormData) {
+    const client = formClient();
+    if (!data.get('id')) data.append('id', id);
+    const resp = await client.post(`/flights/${id}`, data);
+    return normalizeResponseData(resp.data);
+  }
+
+  // Check if a file is present in a plain object, then convert to FormData
+  if (typeof data === 'object') {
+    const containsFile = Object.values(data).some(v => v instanceof File || v instanceof Blob);
+    if (containsFile) {
+      const fd = objectToFormData(data);
+      if (!fd.get('id')) fd.append('id', id);
+      const client = formClient();
+      const resp = await client.post(`/flights/${id}`, fd);
+      return normalizeResponseData(resp.data);
+    }
+    // Default to PUT/POST for JSON updates
+    const resp = await api.put(`/flights/${id}`, data);
+    return normalizeResponseData(resp.data);
+  }
+
+  const resp = await api.put(`/flights/${id}`, data);
+  return normalizeResponseData(resp.data);
+}
+
+/**
+ * Deletes a flight record by ID.
+ */
+export async function deleteFlight(id) {
+  const resp = await api.delete(`/flights/${id}`);
+  return resp.data;
+}

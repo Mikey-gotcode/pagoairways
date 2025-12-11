@@ -83,6 +83,10 @@
                 <i class="fas fa-map-marked-alt text-lg"></i>
                 <span>Destinations</span>
               </router-link>
+              <router-link to="/super-admin/destinations" :class="sidebarLinkClass('/flights')">
+                <i class="fas fa-map-marked-alt text-lg"></i>
+                <span>Flights</span>
+              </router-link>
               <router-link to="/super-admin/settings" :class="sidebarLinkClass('/settings')">
                 <i class="fas fa-map-marked-alt text-lg"></i>
                 <span>Settings</span>

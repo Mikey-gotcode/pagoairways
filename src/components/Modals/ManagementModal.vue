@@ -216,7 +216,7 @@ function clearExistingImage() {
 }
 
 // helper for required fields
-const isRequired = (key) => ['name', 'description'].includes(key);
+const isRequired = (key) => ['name', 'description','airline', 'destination', 'price'].includes(key);
 const formatLabel = (key) => String(key).replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
 
 /* ------------------ NEW: dumpFormData helper ------------------

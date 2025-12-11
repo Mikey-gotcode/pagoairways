@@ -63,6 +63,7 @@ const routes = [
             {path:'/super-admin',redirect:'/super-admin/destinations'},
             {path:"destinations",component:DestinationManager},
             {path:"accommodations",component:AccommodationManager},
+            {path:"flightsAdd",component:FlightsManager},
             {path:"settings",component:Settings}
         ]
     },
