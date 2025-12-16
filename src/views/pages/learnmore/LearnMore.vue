@@ -6,7 +6,7 @@
           <div class="flex items-center">
             <div class="flex-shrink-0 flex items-center">
               <i class="fas fa-cube text-blue-600 text-2xl mr-2"></i>
-              <span class="text-xl font-bold text-gray-900">ProductName</span>
+              <span class="text-xl font-bold text-gray-900">PAGOAIRWAYS</span>
             </div>
           </div>
           <div class="hidden md:ml-6 md:flex md:items-center md:space-x-8">
@@ -379,10 +379,10 @@
         <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
           <div class="flex items-center mb-4 md:mb-0">
             <i class="fas fa-cube text-blue-400 text-2xl mr-2"></i>
-            <span class="text-xl font-bold">ProductName</span>
+            <span class="text-xl font-bold">PAGOAIRWAYS</span>
           </div>
           <div class="text-gray-400 text-sm mb-4 md:mb-0">
-            © 2023 ProductName. All rights reserved.
+            © 2025 PAGOAIRWAYS. All rights reserved.
           </div>
           <div class="flex space-x-6">
             <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-facebook-f text-xl"></i></a>
@@ -397,6 +397,7 @@
 </template>
 
 <script setup>
+// Script remains unchanged
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 
