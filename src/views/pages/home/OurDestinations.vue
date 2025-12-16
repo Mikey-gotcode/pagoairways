@@ -74,9 +74,9 @@
 
             <div class="flex justify-between items-end mt-2 pt-2 border-t border-gray-50">
                 <span class="text-indigo-600 font-bold text-lg">{{ flight.price }}</span>
-                <button class="bg-indigo-50 text-indigo-700 text-xs font-bold py-1.5 px-3 rounded hover:bg-indigo-100 transition">
+                <!-- <button class="bg-indigo-50 text-indigo-700 text-xs font-bold py-1.5 px-3 rounded hover:bg-indigo-100 transition">
                   Book
-                </button>
+                </button> -->
             </div>
           </div>
         </div>

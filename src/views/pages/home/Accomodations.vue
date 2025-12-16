@@ -1,5 +1,5 @@
 <template>
-  <main class="container mx-auto px-4 py-8">
+  <main class="container mx-auto px-4 py-8 relative">
     
     <section class="mb-12">
       <h2 class="text-2xl md:text-3xl font-bold mb-6 text-gray-800">Popular Destinations</h2>
@@ -79,7 +79,7 @@
             
             <div class="mt-auto flex justify-between items-center pt-2 border-t border-gray-100">
                 <span class="text-indigo-600 font-extrabold text-lg">{{ accommodation.price }}</span>
-                <button class="bg-indigo-600 text-white text-xs font-semibold py-1.5 px-4 rounded hover:bg-indigo-700 transition">
+                <button @click="openAccommodationModal(accommodation)" class="bg-indigo-600 text-white text-xs font-semibold py-1.5 px-4 rounded hover:bg-indigo-700 transition">
                   View
                 </button>
             </div>
@@ -88,8 +88,76 @@
       </div>
     </section>
 
+    <div v-if="selectedAccommodationDetails" 
+         class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60 backdrop-blur-sm p-4"
+         @click.self="closeAccommodationModal">
+        
+        <div class="bg-white rounded-xl shadow-2xl w-full max-w-2xl overflow-hidden relative animate-fade-in-up max-h-[90vh] flex flex-col">
+            
+            <button @click="closeAccommodationModal" 
+                    class="absolute top-4 right-4 z-10 bg-white/80 hover:bg-white text-gray-800 hover:text-red-600 rounded-full p-2 transition shadow-sm backdrop-blur-md">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+
+            <div class="overflow-y-auto">
+                <div class="relative h-64">
+                    <img :src="selectedAccommodationDetails.image_url" 
+                         :alt="selectedAccommodationDetails.name" 
+                         class="w-full h-full object-cover">
+                    <div class="absolute bottom-4 left-4">
+                         <span class="text-xs font-bold px-3 py-1 rounded-full text-white uppercase tracking-wider shadow-sm"
+                               :class="getSeverityClass(selectedAccommodationDetails.status)">
+                             {{ selectedAccommodationDetails.status }}
+                         </span>
+                    </div>
+                </div>
+
+                <div class="p-8">
+                    <div class="flex justify-between items-start mb-4">
+                        <h2 class="text-3xl font-bold text-gray-900" style="font-family: 'Playfair Display', serif;">
+                            {{ selectedAccommodationDetails.name }}
+                        </h2>
+                        <span class="text-2xl font-bold text-indigo-600">
+                            {{ selectedAccommodationDetails.price }}
+                        </span>
+                    </div>
+
+                    <div class="flex items-center space-x-6 text-sm text-gray-600 mb-6 border-b border-gray-100 pb-6">
+                        <span class="flex items-center">
+                            <i class="pi pi-map-marker mr-2 text-indigo-500"></i>
+                            {{ selectedAccommodationDetails.destination }}
+                        </span>
+                        <span class="flex items-center">
+                            <i class="pi pi-users mr-2 text-indigo-500"></i>
+                            {{ selectedAccommodationDetails.capacity }}
+                        </span>
+                    </div>
+
+                    <div class="space-y-4 text-gray-700 leading-relaxed">
+                        <h3 class="font-semibold text-lg text-gray-900">Description</h3>
+                        <p>
+                           {{ selectedAccommodationDetails.description || 'Experience comfort and luxury at its finest. This accommodation offers premium amenities and stunning views, perfect for your next getaway.' }}
+                        </p>
+                    </div>
+
+                    <div class="mt-8 flex justify-end gap-3">
+                        <button @click="closeAccommodationModal" class="px-6 py-2 rounded-lg text-gray-600 hover:bg-gray-100 font-medium transition">
+                            Close
+                        </button>
+                        <button class="px-6 py-2 rounded-lg bg-indigo-600 text-white font-bold hover:bg-indigo-700 shadow-lg hover:shadow-xl transition transform hover:-translate-y-0.5">
+                            Book Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
   </main>
 </template>
+
 <script setup>
 import { onMounted, ref } from 'vue';
 import { getAccommodations, getDestinations } from '@/api';
@@ -99,6 +167,7 @@ const accommodations = ref([]);
 const destinations = ref([]); 
 const selectedCountry = ref(null);
 const hoveredDestination = ref(null);
+const selectedAccommodationDetails = ref(null); // NEW: MODAL STATE
 
 // --- UTILITY: Retry Logic (Unchanged) ---
 const retry = async (fn, retries = 5, delay = 1000) => {
@@ -114,14 +183,21 @@ const retry = async (fn, retries = 5, delay = 1000) => {
   }
 };
 
-// --- DATA FETCHING ---
+// --- MODAL ACTIONS ---
+const openAccommodationModal = (accommodation) => {
+    selectedAccommodationDetails.value = accommodation;
+    document.body.style.overflow = 'hidden'; // Stop background scrolling
+};
 
+const closeAccommodationModal = () => {
+    selectedAccommodationDetails.value = null;
+    document.body.style.overflow = 'auto'; // Restore background scrolling
+};
+
+// --- DATA FETCHING (Unchanged) ---
 const fetchAccommodations = async () => {
-  // 🎯 LOG 1: What filter value is being sent to the backend?
   console.log(`[ACCOMMODATIONS FETCH] Starting fetch. Selected country filter: ${selectedCountry.value}`);
-  
   try {
-    // getAccommodations(selectedCountry.value) is where the API call happens
     const responseData = await retry(() => getAccommodations(selectedCountry.value));
     
     let dataToUse = [];
@@ -136,16 +212,7 @@ const fetchAccommodations = async () => {
     }
 
     accommodations.value = dataToUse;
-    
-    // 🎯 LOG 2: How many results did the backend return?
     console.log(`[ACCOMMODATIONS FETCH] Success. Total items received: ${dataToUse.length}`);
-    
-    // 🎯 LOG 3: Inspect the first item's destination property for a successful match.
-    if (dataToUse.length > 0) {
-        console.log(`[ACCOMMODATIONS FETCH] First item destination property: ${dataToUse[0].destination}`);
-    }
-
-
   } catch (error) {
     console.error('[ACCOMMODATIONS FETCH] Failed to fetch after multiple retries:', error);
   }
@@ -157,7 +224,6 @@ const fetchDestinations = async () => {
     const responseData = await retry(getDestinations);
     
     let destinationArray = [];
-
     if (Array.isArray(responseData)) {
         destinationArray = responseData;
     } else if (responseData && Array.isArray(responseData.data)) {
@@ -167,31 +233,17 @@ const fetchDestinations = async () => {
         destinations.value = [];
         return;
     }
-
     destinations.value = destinationArray;
-    
-    // 🎯 LOG 4: Log the names that were loaded into the destination list.
-    const destinationNames = destinationArray.map(d => d.name);
-    console.log(`[DESTINATIONS FETCH] Success. Loaded destination names: ${destinationNames.join(', ')}`);
-
-
   } catch (error) {
     console.error('[DESTINATIONS FETCH] Failed to fetch destinations after multiple retries:', error);
   }
 };
 
 // --- EVENT HANDLERS ---
-
 const handleCountrySelect = (countryName) => {
-    // 🎯 LOG 5: What destination name was clicked?
     console.log(`[COUNTRY SELECT] User selected: ${countryName}. Setting filter.`);
-
     selectedCountry.value = countryName;
-    
-    // Re-fetch accommodations based on the new selection
     fetchAccommodations();
-    
-    // Smooth scroll to accommodations
     setTimeout(() => {
         window.scrollTo({ top: window.scrollY + 400, behavior: 'smooth' });
     }, 100);
@@ -200,11 +252,10 @@ const handleCountrySelect = (countryName) => {
 const clearCountrySelection = () => {
     console.log("[COUNTRY SELECT] Clearing country selection. Resetting filter to null.");
     selectedCountry.value = null;
-    fetchAccommodations(); // Fetch all again
+    fetchAccommodations(); 
 };
 
-// --- TEMPLATE HELPERS (Unchanged) ---
-
+// --- TEMPLATE HELPERS ---
 const getSeverityClass = (status) => {
   switch (status) {
     case 'Available': return 'bg-green-500';
@@ -224,13 +275,9 @@ const getAffiliateLink = (countryName) => {
     return dest ? dest.affiliate_link : '#';
 };
 
-// --- LIFECYCLE (Unchanged) ---
+// --- LIFECYCLE ---
 onMounted(() => {
   fetchDestinations();
   fetchAccommodations();
 });
 </script>
-
-<style scoped>
-/* Scoped styles if needed, though Tailwind handles most styling */
-</style>
