@@ -48,7 +48,7 @@
         {{ selectedCountry ? 'No flights found for this destination.' : 'Loading flights...' }}
       </div>
 
-      <div v-else class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+      <div v-else class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4" id="destinations">
         <div v-for="flight in flights"
              :key="flight.id"
              class="bg-white rounded-lg shadow-md overflow-hidden border border-gray-100 transition-all duration-300 hover:shadow-lg flex flex-col">
