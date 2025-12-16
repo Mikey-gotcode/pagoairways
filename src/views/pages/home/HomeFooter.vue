@@ -6,19 +6,19 @@
           <h4 class="text-xl font-bold mb-4" style="font-family: 'Playfair Display', serif; color: #a7e0c4;">
             RESERVATIONS OFFICE
           </h4>
-          <p class="text-sm mb-2" style="font-family: 'Cormorant Garamond', serif;">
+          <p class="text-lg mb-2" style="font-family: 'Cormorant Garamond', serif;">
             Electricity House
           </p>
-          <p class="text-sm mb-2" style="font-family: 'Cormorant Garamond', serif;">
+          <p class="text-lg mb-2" style="font-family: 'Cormorant Garamond', serif;">
             8th Flr Harambee Ave.
           </p>
-          <p class="text-sm mb-2" style="font-family: 'Cormorant Garamond', serif;">
+          <p class="text-lg mb-2" style="font-family: 'Cormorant Garamond', serif;">
             0203-311-388
           </p>
-          <p class="text-sm mb-2" style="font-family: 'Cormorant Garamond', serif;">
+          <p class="text-lg mb-2" style="font-family: 'Cormorant Garamond', serif;">
             0717666651
           </p>
-          <p class="text-sm" style="font-family: 'Cormorant Garamond', serif;">
+          <p class="text-lg" style="font-family: 'Cormorant Garamond', serif;">
             info@pagoairways.co.ke
           </p>
         </div>
@@ -27,16 +27,16 @@
           <h4 class="text-xl font-bold mb-4" style="font-family: 'Playfair Display', serif; color: #a7e0c4;">
             OFFICE HOURS
           </h4>
-          <p class="text-sm mb-2" style="font-family: 'Cormorant Garamond', serif;">
+          <p class="text-lg mb-2" style="font-family: 'Cormorant Garamond', serif;">
             MONDAY TO FRIDAY
           </p>
-          <p class="text-sm mb-4" style="font-family: 'Cormorant Garamond', serif;">
+          <p class="text-lg mb-4" style="font-family: 'Cormorant Garamond', serif;">
             9:00 am to 6:00 pm
           </p>
-          <p class="text-sm mb-2" style="font-family: 'Cormorant Garamond', serif;">
+          <p class="text-lg mb-2" style="font-family: 'Cormorant Garamond', serif;">
             SATURDAY
           </p>
-          <p class="text-sm" style="font-family: 'Cormorant Garamond', serif;">
+          <p class="text-lg" style="font-family: 'Cormorant Garamond', serif;">
             9:00 am to 12:00 noon
           </p>
         </div>
