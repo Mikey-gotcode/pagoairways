@@ -1,14 +1,14 @@
 <template>
   <main class="container mx-auto px-4 py-8 relative">
     
-    <section class="mb-12" id="destinations">
+    <section class="mb-12" >
       <h2 class="text-2xl md:text-3xl font-bold mb-6 text-gray-800">Popular Destinations</h2>
       
       <div v-if="destinations.length === 0" class="text-center py-8 text-gray-500">
         Loading destinations...
       </div>
 
-      <div v-else>
+      <div v-else id="destinations">
         <Carousel :value="destinations" :numVisible="3" :numScroll="1" :responsiveOptions="responsiveOptions" :circular="true" :autoplayInterval="4000">
             <template #item="slotProps">
                 <div class="destination-card relative overflow-hidden rounded-lg shadow-md cursor-pointer transition-all duration-300 hover:shadow-xl group mx-2 mb-4"

@@ -44,12 +44,12 @@
       ]">
         IATA courses
       </router-link>
-      <router-link to="/bookflight" :class="[
-        'hover:text-gray-300 transition-colors duration-200',
-        { 'hover:text-gray-600': !isTransparent, 'hover:text-gray-300': isTransparent }
-      ]">
-        Book Flight
-      </router-link>
+     <li>
+          <a href="#accommodations" :class="[
+            'hover:text-gray-300 transition-colors duration-200',
+            { 'hover:text-gray-600': !isTransparent, 'hover:text-gray-300': isTransparent }
+          ]">Accommodations</a>
+        </li>
 
         <li>
           <a href="#contact" :class="[
@@ -75,6 +75,9 @@
              </li>
             <li>
                 <a href="#destinations" class="hover:text-gray-600" @click="toggleMobileMenu">Destinations</a>
+            </li>
+            <li>
+                <a href="#accommodations" class="hover:text-gray-600" @click="toggleMobileMenu">Accommodations</a>
             </li>
             <li>
                 <a href="https://pagoairways.netlify.app/IATA" class="hover:text-gray-600" @click="toggleMobileMenu">IATA courses</a>

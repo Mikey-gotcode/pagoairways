@@ -8,7 +8,7 @@
         Loading destinations...
       </div>
 
-      <div v-else>
+      <div v-else id="accommodations">
         <Carousel :value="destinations" :numVisible="3" :numScroll="1" :responsiveOptions="responsiveOptions" :circular="true" :autoplayInterval="4000">
             <template #item="slotProps">
                 <div class="destination-card relative overflow-hidden rounded-lg shadow-md cursor-pointer transition-all duration-300 hover:shadow-xl group mx-2 mb-4"
