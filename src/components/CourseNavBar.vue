@@ -20,7 +20,7 @@ const toggleMobileMenu = () => {
         <div class="container mx-auto px-6 py-3 flex justify-between items-center">
             <div class="flex items-center">
                 <img loading="eager" src="/assets/iatalogo.png" alt="IATA Logo" class="h-12">
-                <span class="ml-3 text-xl font-semibold text-blue-800">Pago Travel & Tourism Consultancy</span>
+                <span class="ml-3 text-xl font-semibold text-blue-800">Pago Training Institute</span>
             </div>
             <div class="hidden md:flex space-x-8 items-center">
                 <router-link to="/" class="text-gray-700 hover:text-blue-600 transition">

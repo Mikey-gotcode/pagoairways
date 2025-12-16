@@ -397,9 +397,13 @@
 </template>
 
 <script setup>
-// Script remains unchanged
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
+// 1. Import local assets (images) so Vite can find and process them
+// Assuming your images are in your /src/assets folder or similar
+import pagoSampleImage1 from '@/assets/pagosample1.jpeg';
+import pagoSampleImage2 from '@/assets/pagosample2.jpeg';
+
 
 // Use a reactive variable for the mobile menu state
 const isMobileMenuOpen = ref(false);
@@ -417,21 +421,15 @@ const toggleAccordion = (index) => {
   }
 };
 
-// Image imports (assuming these are in a place Vite can handle)
-const pagoSampleImage1 = 'pagosample1.jpeg';
-const pagoSampleImage2 = 'pagosample2.jpeg';
-
 // Navigation & Functionality
 const router = useRouter();
 
 // Function for buttons that navigate to a new page
 const handleGetStarted = () => {
-  // Replace with the actual route name or path for your signup/start page
   router.push('/signup');
 };
 
 const handleContactUs = () => {
-  // Replace with the actual route name or path for your contact page
   router.push('/contact');
 };
 
@@ -446,7 +444,6 @@ const scrollToSection = (id) => {
   }
 };
 </script>
-
 <style scoped>
 .hero-gradient {
   background: linear-gradient(135deg, #6B73FF 0%, #000DFF 50%, #00D4FF 100%);
