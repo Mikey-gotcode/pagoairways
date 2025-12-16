@@ -1,103 +1,88 @@
 <template>
-  <main class="container mx-auto px-4 py-12">
+  <main class="container mx-auto px-4 py-8">
     
-    <section class="mb-16">
-      <div class="bg-gradient-to-r from-indigo-500 to-purple-600 rounded-2xl p-8 text-white">
-        <h2 class="text-4xl font-bold mb-4">Discover Your Next Adventure</h2>
-        <p class="text-xl mb-6">Explore breathtaking destinations and find your perfect stay</p>
-        <div class="relative max-w-md">
-          <input type="text" placeholder="Search destinations..." class="w-full py-3 px-4 rounded-full text-gray-800 focus:outline-none">
-          <button class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-indigo-600 text-white p-2 rounded-full">
-            <i class="pi pi-search"></i> 
-          </button>
-        </div>
-      </div>
-    </section>
-
-    <section class="mb-16">
-      <h2 class="text-3xl font-bold mb-8 text-gray-800">Popular Destinations</h2>
+    <section class="mb-12">
+      <h2 class="text-2xl md:text-3xl font-bold mb-6 text-gray-800">Popular Destinations</h2>
       
-      <div v-if="destinations.length === 0" class="text-center py-10 text-gray-500">
+      <div v-if="destinations.length === 0" class="text-center py-8 text-gray-500">
         Loading destinations...
       </div>
 
-      <div v-else class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div v-else class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
         <div v-for="destination in destinations" :key="destination.id" 
-             class="destination-card relative overflow-hidden rounded-xl shadow-lg cursor-pointer transition-all duration-300 hover:shadow-2xl"
-             @mouseenter="hoveredDestination = destination.id"
-             @mouseleave="hoveredDestination = null"
+             class="destination-card relative overflow-hidden rounded-lg shadow-md cursor-pointer transition-all duration-300 hover:shadow-xl group"
              @click="handleCountrySelect(destination.name)">
              
-            <img :src="destination.image_url" :alt="destination.name" class="w-full h-64 object-cover">
+            <img :src="destination.image_url" :alt="destination.name" class="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-105">
             
-            <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center transition-opacity duration-300"
-                 :class="{'opacity-0': hoveredDestination !== destination.id, 'opacity-100': hoveredDestination === destination.id}">
-                <h3 class="text-white text-3xl font-bold">{{ destination.name }}</h3>
+            <div class="absolute inset-0 bg-black bg-opacity-30 group-hover:bg-opacity-20 flex items-center justify-center transition-all duration-300">
+                <h3 class="text-white text-xl font-bold tracking-wide drop-shadow-md">{{ destination.name }}</h3>
             </div>
         </div>
       </div>
     </section>
     
-    <section v-if="selectedCountry" class="mb-16">
-        <div class="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
-            <div class="flex justify-between items-center mb-6">
-                <h2 class="text-3xl font-bold text-gray-800">{{ selectedCountry }}</h2>
-                <button @click="clearCountrySelection" class="text-indigo-600 hover:text-indigo-800 font-bold">
-                    Close (X)
+    <section v-if="selectedCountry" class="mb-12">
+        <div class="bg-white rounded-lg shadow-md p-5 border border-gray-100">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-2xl font-bold text-gray-800">{{ selectedCountry }}</h2>
+                <button @click="clearCountrySelection" class="text-gray-400 hover:text-gray-700 font-bold">
+                    ✕
                 </button>
             </div>
 
-            <div class="mb-8">
-                <h3 class="text-xl font-semibold mb-4 text-gray-700">About {{ selectedCountry }}</h3>
-                <p class="text-gray-600">{{ getDestinationDescription(selectedCountry) }}</p>
-                <a :href="getAffiliateLink(selectedCountry)" target="_blank" class="mt-4 inline-block bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition">
+            <div class="mb-4">
+                <h3 class="text-lg font-semibold mb-2 text-gray-700">About {{ selectedCountry }}</h3>
+                <p class="text-sm text-gray-600">{{ getDestinationDescription(selectedCountry) }}</p>
+                <a :href="getAffiliateLink(selectedCountry)" target="_blank" class="mt-3 inline-block bg-indigo-600 text-white text-sm font-medium px-5 py-2 rounded hover:bg-indigo-700 transition">
                     Explore More
                 </a>
             </div>
         </div>
     </section>
 
-    <section class="mb-16">
-      <h2 class="text-3xl font-bold mb-8 text-gray-800"
+    <section class="mb-12">
+      <h2 class="text-2xl md:text-3xl font-bold mb-6 text-gray-800"
           style="font-family: 'Playfair Display', serif;">
-        {{ selectedCountry ? `Accommodations in ${selectedCountry}` : 'Available Accommodations' }}
+        {{ selectedCountry ? `Stays in ${selectedCountry}` : 'Available Accommodations' }}
       </h2>
       
-      <div v-if="accommodations.length === 0" class="text-center py-10 text-gray-500">
-        {{ selectedCountry ? 'No accommodations found for this destination.' : 'Loading accommodations...' }}
+      <div v-if="accommodations.length === 0" class="text-center py-8 text-gray-500">
+        {{ selectedCountry ? 'No accommodations found.' : 'Loading accommodations...' }}
       </div>
       
-      <div v-else class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div v-else class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
         <div v-for="accommodation in accommodations" 
              :key="accommodation.id" 
-             class="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100 transition-all duration-300 hover:shadow-xl">
+             class="bg-white rounded-lg shadow-md overflow-hidden border border-gray-100 transition-all duration-300 hover:shadow-lg flex flex-col">
           
-          <div class="relative">
+          <div class="relative h-40">
               <img loading="eager" :src="accommodation.image_url" :alt="accommodation.name" 
-                   class="w-full h-48 object-cover" />
+                   class="w-full h-full object-cover" />
               
-              <div class="absolute top-2 right-2 text-xs font-semibold py-1 px-3 rounded-lg text-white"
+              <div class="absolute top-2 right-2 text-[10px] uppercase font-bold py-1 px-2 rounded-md text-white shadow-sm"
                    :class="getSeverityClass(accommodation.status)">
                   {{ accommodation.status }}
               </div>
           </div>
           
-          <div class="p-4">
-            <h4 class="text-xl font-bold text-gray-800 mb-1"
+          <div class="p-3 flex flex-col flex-grow">
+            <h4 class="text-lg font-bold text-gray-800 mb-1 leading-tight"
                 style="font-family: 'Playfair Display', serif;">
                 {{ accommodation.name }}
             </h4>
-            <p class="text-gray-600 text-sm mb-2">Destination: {{ accommodation.destination || 'N/A' }}</p> 
-            <p class="text-gray-600 text-sm mb-2">{{ accommodation.capacity }}</p>
             
-            <div class="flex justify-between items-center mb-4">
-                <span class="text-indigo-600 font-extrabold text-lg">{{ accommodation.price }}</span>
-                <span class="text-gray-400 text-xs">{{ accommodation.status }}</span>
+            <div class="text-xs text-gray-500 mb-3 space-y-1">
+                <p class="flex items-center"><i class="pi pi-map-marker mr-1"></i> {{ accommodation.destination || 'N/A' }}</p>
+                <p class="flex items-center"><i class="pi pi-users mr-1"></i> {{ accommodation.capacity }}</p>
             </div>
             
-            <button class="w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700 transition">
-              Book Now
-            </button>
+            <div class="mt-auto flex justify-between items-center pt-2 border-t border-gray-100">
+                <span class="text-indigo-600 font-extrabold text-lg">{{ accommodation.price }}</span>
+                <button class="bg-indigo-600 text-white text-xs font-semibold py-1.5 px-4 rounded hover:bg-indigo-700 transition">
+                  View
+                </button>
+            </div>
           </div>
         </div>
       </div>
@@ -105,7 +90,6 @@
 
   </main>
 </template>
-
 <script setup>
 import { onMounted, ref } from 'vue';
 import { getAccommodations, getDestinations } from '@/api';
