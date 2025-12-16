@@ -18,7 +18,7 @@
       </div>
     </div>
 
-    <div class="w-full lg:w-1/2 bg-red-900 flex flex-col items-center justify-center p-8 md:p-12 lg:p-16 text-white relative">
+    <div class="w-full lg:w-1/2 bg-red-900 flex flex-col items-center justify-center p-8 md:p-12 lg:p-16 text-white relative" id="contact">
       <h2 class="text-5xl md:text-6xl lg:text-7xl font-bold text-center mb-6"
           style="font-family: 'Playfair Display', serif; color: #2A47EEFF;"
           data-aos="fade-left">

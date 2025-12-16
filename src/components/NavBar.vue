@@ -68,7 +68,7 @@
       <div v-if="isMobileMenuOpen" class="absolute top-full left-0 w-full bg-white shadow-md py-4 md:hidden">
         <ul class="flex flex-col space-y-4 px-4 text-gray-800">
              <li>
-                <a href="#home" class="hover:text-gray-600" @click="toggleMobileMenu">Home</a>
+                <a href="#call-to-action-section" class="hover:text-gray-600" @click="toggleMobileMenu">Home</a>
              </li>
              <li>
                 <a href="#aboutus" class="hover:text-gray-600" @click="toggleMobileMenu">About Us</a>

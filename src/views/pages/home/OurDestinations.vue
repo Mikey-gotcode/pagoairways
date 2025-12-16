@@ -1,7 +1,7 @@
 <template>
   <main class="container mx-auto px-4 py-8 relative">
     
-    <section class="mb-12">
+    <section class="mb-12" id="destinations">
       <h2 class="text-2xl md:text-3xl font-bold mb-6 text-gray-800">Popular Destinations</h2>
       
       <div v-if="destinations.length === 0" class="text-center py-8 text-gray-500">
@@ -82,9 +82,9 @@
 
                       <div class="flex justify-between items-end mt-2 pt-2 border-t border-gray-50">
                           <span class="text-indigo-600 font-bold text-lg">{{ slotProps.data.price }}</span>
-                          <button class="bg-blue-600 text-white text-xs font-semibold py-1.5 px-4 rounded hover:bg-blue-700 transition">
+                          <!-- <button class="bg-blue-600 text-white text-xs font-semibold py-1.5 px-4 rounded hover:bg-blue-700 transition">
                             Book Flight
-                          </button>
+                          </button> -->
                       </div>
                   </div>
                 </div>
