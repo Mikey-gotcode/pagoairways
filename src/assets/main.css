@@ -70,3 +70,41 @@ a,
     background-color: hsla(160, 100%, 37%, 0.2);
   }
 }
+
+/* put in src/main.css (global) */
+.fa,
+.fas,
+.far,
+.fab,
+.fa-solid,
+.fa-regular,
+.fa-brands {
+  speak: none;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Font families and weights used by FA6 */
+.fa-solid,
+.fas { 
+  font-family: "Font Awesome 6 Free"; 
+  font-weight: 900; /* solid uses 900 */
+}
+.fa-regular,
+.far {
+  font-family: "Font Awesome 6 Free";
+  font-weight: 400;
+}
+.fa-brands,
+.fab {
+  font-family: "Font Awesome 6 Brands";
+  font-weight: 400;
+}
+
+/* if something stubbornly overrides font-family */
+.fa, .fa-solid, .fa-regular, .fa-brands {
+  font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands" !important;
+}
