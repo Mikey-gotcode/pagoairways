@@ -5,7 +5,7 @@
         <div class="flex justify-between h-16">
           <div class="flex items-center">
             <div class="flex-shrink-0 flex items-center">
-              <i class="fas fa-cube text-blue-600 text-2xl mr-2"></i>
+              <i class="fa-solid fa-cube text-blue-600 text-2xl mr-2"></i>
               <span class="text-xl font-bold text-gray-900">PAGOAIRWAYS</span>
             </div>
           </div>
@@ -21,7 +21,7 @@
           <div class="-mr-2 flex items-center md:hidden">
             <button @click="toggleMobileMenu" type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none" aria-controls="mobile-menu" :aria-expanded="isMobileMenuOpen">
               <span class="sr-only">Open main menu</span>
-              <i class="fas fa-bars text-xl"></i>
+              <i class="fa-solid fa-bars text-xl"></i>
             </button>
           </div>
         </div>
@@ -48,10 +48,12 @@
             <p class="text-xl opacity-90 mb-8">From exotic international destinations to hidden local gems, our bespoke travel experiences create memories that last a lifetime. Let us take you on journeys beyond imagination.</p>
             <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
               <button @click="scrollToSection('features-section')" class="bg-white text-blue-600 hover:bg-gray-100 px-6 py-3 rounded-md text-lg font-semibold transition duration-300">
-                Explore Destinations <i class="fas fa-globe ml-2"></i>
+                Explore Destinations 
+                <i class="fa-solid fa-globe ml-2"></i>
               </button>
               <button @click="scrollToSection('how-it-works-section')" class="bg-transparent border-2 border-white hover:bg-white hover:text-blue-600 px-6 py-3 rounded-md text-lg font-semibold transition duration-300">
-                View Itineraries <i class="fas fa-route ml-2"></i>
+                View Itineraries 
+                <i class="fa-solid fa-route ml-2"></i>
               </button>
             </div>
           </div>
@@ -72,7 +74,7 @@
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           <div class="bg-white p-8 rounded-xl shadow-md feature-card transition duration-300">
             <div class="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mb-6">
-              <i class="fas fa-globe-americas text-blue-600 text-2xl"></i>
+              <i class="fa-solid fa-globe-americas text-blue-600 text-2xl"></i>
             </div>
             <h3 class="text-xl font-semibold mb-3">Global Destinations</h3>
             <p class="text-gray-600">Explore over 150 handpicked destinations worldwide, from iconic landmarks to hidden local treasures.</p>
@@ -80,7 +82,7 @@
           
           <div class="bg-white p-8 rounded-xl shadow-md feature-card transition duration-300">
             <div class="w-14 h-14 bg-green-100 rounded-full flex items-center justify-center mb-6">
-              <i class="fas fa-hotel text-green-600 text-2xl"></i>
+              <i class="fa-solid fa-hotel text-green-600 text-2xl"></i>
             </div>
             <h3 class="text-xl font-semibold mb-3">Premium Accommodations</h3>
             <p class="text-gray-600">Luxury 5-star hotels, boutique resorts, and carefully selected local stays for authentic experiences.</p>
@@ -88,7 +90,7 @@
           
           <div class="bg-white p-8 rounded-xl shadow-md feature-card transition duration-300">
             <div class="w-14 h-14 bg-purple-100 rounded-full flex items-center justify-center mb-6">
-              <i class="fas fa-utensils text-purple-600 text-2xl"></i>
+              <i class="fa-solid fa-utensils text-purple-600 text-2xl"></i>
             </div>
             <h3 class="text-xl font-semibold mb-3">Gourmet Dining</h3>
             <p class="text-gray-600">Savor culinary delights with curated restaurant experiences featuring local specialties and international cuisine.</p>
@@ -96,7 +98,7 @@
           
           <div class="bg-white p-8 rounded-xl shadow-md feature-card transition duration-300">
             <div class="w-14 h-14 bg-yellow-100 rounded-full flex items-center justify-center mb-6">
-              <i class="fas fa-route text-yellow-600 text-2xl"></i>
+              <i class="fa-solid fa-route text-yellow-600 text-2xl"></i>
             </div>
             <h3 class="text-xl font-semibold mb-3">Tailored Itineraries</h3>
             <p class="text-gray-600">Customized travel plans designed by expert tour guides to match your interests and pace.</p>
@@ -104,7 +106,7 @@
           
           <div class="bg-white p-8 rounded-xl shadow-md feature-card transition duration-300">
             <div class="w-14 h-14 bg-red-100 rounded-full flex items-center justify-center mb-6">
-              <i class="fas fa-users text-red-600 text-2xl"></i>
+              <i class="fa-solid fa-users text-red-600 text-2xl"></i>
             </div>
             <h3 class="text-xl font-semibold mb-3">Expert Guides</h3>
             <p class="text-gray-600">Local experts with insider knowledge to show you the authentic side of every destination.</p>
@@ -112,7 +114,7 @@
           
           <div class="bg-white p-8 rounded-xl shadow-md feature-card transition duration-300">
             <div class="w-14 h-14 bg-indigo-100 rounded-full flex items-center justify-center mb-6">
-              <i class="fas fa-shield-alt text-indigo-600 text-2xl"></i>
+              <i class="fa-solid fa-shield-alt text-indigo-600 text-2xl"></i>
             </div>
             <h3 class="text-xl font-semibold mb-3">Travel Protection</h3>
             <p class="text-gray-600">Comprehensive travel insurance included for peace of mind on every adventure.</p>
@@ -189,11 +191,11 @@
           <div class="bg-white p-8 rounded-xl shadow-md">
             <div class="flex items-center mb-4">
               <div class="text-yellow-400 text-xl">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
               </div>
             </div>
             <p class="text-gray-600 mb-6">"The Bali tour was absolutely magical! Our guide took us to hidden beaches that weren't in any guidebook. The luxury accommodations exceeded our expectations."</p>
@@ -209,11 +211,11 @@
           <div class="bg-white p-8 rounded-xl shadow-md">
             <div class="flex items-center mb-4">
               <div class="text-yellow-400 text-xl">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
               </div>
             </div>
             <p class="text-gray-600 mb-6">"Our European heritage tour was flawlessly planned. From the cozy chalet in Switzerland to the wine tasting in Tuscany, every moment was pure bliss."</p>
@@ -229,11 +231,11 @@
           <div class="bg-white p-8 rounded-xl shadow-md">
             <div class="flex items-center mb-4">
               <div class="text-yellow-400 text-xl">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star-half-alt"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star-half-stroke"></i>
               </div>
             </div>
             <p class="text-gray-600 mb-6">"The local food tour in Mexico City was a revelation! Our guide's passion for culinary arts turned a simple meal into a cultural experience we'll never forget."</p>
@@ -260,7 +262,7 @@
           <div class="border border-gray-200 rounded-lg overflow-hidden">
             <button @click="toggleAccordion(1)" class="w-full flex justify-between items-center p-6 focus:outline-none accordion-button">
               <h3 class="text-lg font-semibold text-left">What destinations do you offer?</h3>
-              <i class="fas fa-chevron-down text-gray-500 transition-transform duration-300" :class="{ 'rotate-180': activeAccordionItem === 1 }"></i>
+              <i class="fa-solid fa-chevron-down text-gray-500 transition-transform duration-300" :class="{ 'rotate-180': activeAccordionItem === 1 }"></i>
             </button>
             <div class="accordion-content px-6 pb-0" :class="{ 'active': activeAccordionItem === 1 }">
               <p class="text-gray-600 pb-6">We offer tours to over 150 destinations worldwide, from iconic international landmarks like the Pyramids of Giza and the Great Wall of China to hidden local gems in your own backyard. Our expert travel planners create new itineraries monthly based on seasonal attractions and customer interests.</p>
@@ -270,7 +272,7 @@
           <div class="border border-gray-200 rounded-lg overflow-hidden">
             <button @click="toggleAccordion(2)" class="w-full flex justify-between items-center p-6 focus:outline-none accordion-button">
               <h3 class="text-lg font-semibold text-left">What's included in your tour packages?</h3>
-              <i class="fas fa-chevron-down text-gray-500 transition-transform duration-300" :class="{ 'rotate-180': activeAccordionItem === 2 }"></i>
+              <i class="fa-solid fa-chevron-down text-gray-500 transition-transform duration-300" :class="{ 'rotate-180': activeAccordionItem === 2 }"></i>
             </button>
             <div class="accordion-content px-6 pb-0" :class="{ 'active': activeAccordionItem === 2 }">
               <p class="text-gray-600 pb-6">All our packages include premium accommodations, daily breakfast, select meals, airport transfers, guided tours, entrance fees to attractions, and 24/7 support during your journey. Optional upgrades for first-class flights, spa treatments, and exclusive experiences are also available.</p>
@@ -280,7 +282,7 @@
           <div class="border border-gray-200 rounded-lg overflow-hidden">
             <button @click="toggleAccordion(3)" class="w-full flex justify-between items-center p-6 focus:outline-none accordion-button">
               <h3 class="text-lg font-semibold text-left">How far in advance should I book?</h3>
-              <i class="fas fa-chevron-down text-gray-500 transition-transform duration-300" :class="{ 'rotate-180': activeAccordionItem === 3 }"></i>
+              <i class="fa-solid fa-chevron-down text-gray-500 transition-transform duration-300" :class="{ 'rotate-180': activeAccordionItem === 3 }"></i>
             </button>
             <div class="accordion-content px-6 pb-0" :class="{ 'active': activeAccordionItem === 3 }">
               <p class="text-gray-600 pb-6">We recommend booking 3-6 months in advance for peak travel seasons (summer, holidays, spring break) to secure the best accommodations and flight options. For off-season travel, 4-6 weeks is usually sufficient. Last-minute deals are sometimes available for spontaneous travelers.</p>
@@ -290,7 +292,7 @@
           <div class="border border-gray-200 rounded-lg overflow-hidden">
             <button @click="toggleAccordion(4)" class="w-full flex justify-between items-center p-6 focus:outline-none accordion-button">
               <h3 class="text-lg font-semibold text-left">Do you offer group travel options?</h3>
-              <i class="fas fa-chevron-down text-gray-500 transition-transform duration-300" :class="{ 'rotate-180': activeAccordionItem === 4 }"></i>
+              <i class="fa-solid fa-chevron-down text-gray-500 transition-transform duration-300" :class="{ 'rotate-180': activeAccordionItem === 4 }"></i>
             </button>
             <div class="accordion-content px-6 pb-0" :class="{ 'active': activeAccordionItem === 4 }">
               <p class="text-gray-600 pb-6">Yes! We specialize in group travel for families, corporate retreats, wedding parties, and special interest groups. Group packages include exclusive experiences, flexible payment plans, and dedicated travel coordinators to ensure seamless planning for groups of 10 or more.</p>
@@ -300,7 +302,7 @@
           <div class="border border-gray-200 rounded-lg overflow-hidden">
             <button @click="toggleAccordion(5)" class="w-full flex justify-between items-center p-6 focus:outline-none accordion-button">
               <h3 class="text-lg font-semibold text-left">What should I pack for my tour?</h3>
-              <i class="fas fa-chevron-down text-gray-500 transition-transform duration-300" :class="{ 'rotate-180': activeAccordionItem === 5 }"></i>
+              <i class="fa-solid fa-chevron-down text-gray-500 transition-transform duration-300" :class="{ 'rotate-180': activeAccordionItem === 5 }"></i>
             </button>
             <div class="accordion-content px-6 pb-0" :class="{ 'active': activeAccordionItem === 5 }">
               <p class="text-gray-600 pb-6">Each booking includes a detailed packing list tailored to your destination, season, and activities. Our travel guides provide recommendations for appropriate attire, essential items, and local customs to ensure you're perfectly prepared for your journey.</p>
@@ -311,7 +313,8 @@
         <div class="text-center mt-12">
           <p class="text-gray-600 mb-6">Still have questions? We're happy to help.</p>
           <button @click="handleContactUs" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-md text-lg font-semibold transition duration-300">
-            Contact Our Travel Experts <i class="fas fa-headset ml-2"></i>
+            Contact Our Travel Experts 
+            <i class="fa-solid fa-headset ml-2"></i>
           </button>
         </div>
       </div>
@@ -323,10 +326,12 @@
         <p class="text-xl opacity-90 mb-8 max-w-3xl mx-auto">Join thousands of satisfied travelers who've discovered the world with us. Book your next adventure today!</p>
         <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
           <button @click="scrollToSection('features-section')" class="bg-white text-blue-600 hover:bg-gray-100 px-8 py-4 rounded-md text-lg font-semibold transition duration-300">
-            Explore Tours <i class="fas fa-globe ml-2"></i>
+            Explore Tours 
+            <i class="fa-solid fa-globe ml-2"></i>
           </button>
           <button @click="handleContactUs" class="bg-transparent border-2 border-white hover:bg-white hover:text-blue-600 px-8 py-4 rounded-md text-lg font-semibold transition duration-300">
-            Chat with a Travel Expert <i class="fas fa-comments ml-2"></i>
+            Chat with a Travel Expert 
+            <i class="fa-solid fa-comments ml-2"></i>
           </button>
         </div>
       </div>
@@ -378,17 +383,17 @@
         
         <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
           <div class="flex items-center mb-4 md:mb-0">
-            <i class="fas fa-cube text-blue-400 text-2xl mr-2"></i>
+            <i class="fa-solid fa-cube text-blue-400 text-2xl mr-2"></i>
             <span class="text-xl font-bold">PAGOAIRWAYS</span>
           </div>
           <div class="text-gray-400 text-sm mb-4 md:mb-0">
             © 2025 PAGOAIRWAYS. All rights reserved.
           </div>
           <div class="flex space-x-6">
-            <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-facebook-f text-xl"></i></a>
-            <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-twitter text-xl"></i></a>
-            <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-linkedin-in text-xl"></i></a>
-            <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-instagram text-xl"></i></a>
+            <a href="#" class="text-gray-400 hover:text-white transition"><i class="fa-brands fa-facebook-f text-xl"></i></a>
+            <a href="#" class="text-gray-400 hover:text-white transition"><i class="fa-brands fa-twitter text-xl"></i></a>
+            <a href="#" class="text-gray-400 hover:text-white transition"><i class="fa-brands fa-linkedin-in text-xl"></i></a>
+            <a href="#" class="text-gray-400 hover:text-white transition"><i class="fa-brands fa-instagram text-xl"></i></a>
           </div>
         </div>
       </div>
