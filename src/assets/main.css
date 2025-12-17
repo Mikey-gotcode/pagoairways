@@ -70,8 +70,12 @@ a,
     background-color: hsla(160, 100%, 37%, 0.2);
   }
 }
+/* ============================================================
+   🔥 FONT AWESOME 6 + TAILWIND PRE-FLIGHT FIX (CRITICAL)
+   This prevents "F1B2" / hex codes from rendering
+============================================================ */
 
-/* put in src/main.css (global) */
+/* Base FA reset */
 .fa,
 .fas,
 .far,
@@ -79,32 +83,34 @@ a,
 .fa-solid,
 .fa-regular,
 .fa-brands {
-  speak: none;
+  display: inline-block;
   font-style: normal;
   font-variant: normal;
+  line-height: 1;
   text-rendering: auto;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Font families and weights used by FA6 */
-.fa-solid,
-.fas { 
-  font-family: "Font Awesome 6 Free"; 
-  font-weight: 900; /* solid uses 900 */
+/* SOLID & REGULAR ICONS */
+.fa::before,
+.fa-solid::before,
+.fas::before,
+.fa-regular::before,
+.far::before {
+  font-family: "Font Awesome 6 Free" !important;
+  font-weight: 900;
 }
-.fa-regular,
-.far {
-  font-family: "Font Awesome 6 Free";
-  font-weight: 400;
-}
-.fa-brands,
-.fab {
-  font-family: "Font Awesome 6 Brands";
+
+/* REGULAR overrides */
+.fa-regular::before,
+.far::before {
   font-weight: 400;
 }
 
-/* if something stubbornly overrides font-family */
-.fa, .fa-solid, .fa-regular, .fa-brands {
-  font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands" !important;
+/* BRAND ICONS */
+.fa-brands::before,
+.fab::before {
+  font-family: "Font Awesome 6 Brands" !important;
+  font-weight: 400;
 }
