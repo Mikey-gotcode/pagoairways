@@ -5,7 +5,7 @@
         <div class="flex justify-between h-16">
           <div class="flex items-center">
             <div class="flex-shrink-0 flex items-center">
-              <i class="fa-solid fa-cube text-blue-600 text-2xl mr-2"></i>
+              <i class="fa fa-cube text-blue-600 text-2xl mr-2"></i>
               <span class="text-xl font-bold text-gray-900">PAGOAIRWAYS</span>
             </div>
           </div>
