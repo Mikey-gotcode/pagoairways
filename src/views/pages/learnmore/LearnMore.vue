@@ -12,7 +12,7 @@
           <div class="hidden md:ml-6 md:flex md:items-center md:space-x-8">
             <a href="/" class="text-gray-500 hover:text-gray-700 px-3 py-2 text-sm font-medium">Home</a>
             <a href="#" class="text-blue-600 border-b-2 border-blue-600 px-3 py-2 text-sm font-medium">Learn More</a>
-            <a href="/home/#contact" class="text-gray-500 hover:text-gray-700 px-3 py-2 text-sm font-medium">Contact</a>
+            <a href="/#contact" class="text-gray-500 hover:text-gray-700 px-3 py-2 text-sm font-medium">Contact</a>
             <!-- <button @click="handleGetStarted" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition duration-300">
               Get Started
             </button> -->
